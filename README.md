@@ -1,5 +1,5 @@
 # HAR-UP
-Multimodal System for Fall Detection
+## Multimodal System for Fall Detection
 
 In this repository you'll be able to find the python programs used for the Universidad Panamericana's Multimodal System for Fall Detection.
  These are all written  in python.
