@@ -13,9 +13,13 @@ The available programs were used in the following manner and order:
 1. First of all, the desired features were placed in a csv file.
 
 2. A (preliminar) feature selection process was be made. To select the features, Weka *add citation* was used, with attribute selection using Explorer mode and 10 folds for the selection, with the following models:
+
 					-CfsSubsetEval_BestFirst (with ZeroR set as the classifier)
+					
 					-SubSetEval_Greedysepwise (with ZeroR set as the classifier)
+					
 					-CorrelationAttributeEval_Ranker (with ZeroR set as the classifier)
+					
 					-ClassifierAttributeEval_Ranker (with DecisionTable set as the classifier)
      
 3. After the first feature selection was completed, the selected features were written in a new csv file.
