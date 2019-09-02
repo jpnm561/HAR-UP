@@ -30,7 +30,7 @@ def cleanLine(line, header = False):
     arr = line.split(',')
     return arr
 
-def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir='')
+def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
     for cncpt in concept:
         print(cnpt)
         for twnd in t_window:
