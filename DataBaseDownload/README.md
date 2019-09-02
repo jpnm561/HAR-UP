@@ -42,4 +42,6 @@ Once this is done, you should be able to use the programs in this folder without
 
 - **createFolder**: A function that checks if a needed directory exists, if not, it makes it.
 
+- **Decompressor.py**: A file with functions to decompress zip files. Useful when wokring with Camera#.zip and Camera#_OF.zip
+
 
