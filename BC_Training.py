@@ -204,10 +204,10 @@ def BC_Training(concept,
                                         w.write(str(Y[a]) + ',' + str(y_30[a]) + '\n')
                                         a += 1
                         except Exception as e:
-                            print(str(f)+'::'+str(k)+':  '+str(e))
+                            print('----Unexpected error: ' + str(e))
                         w.close()
                         print('-----' + str(a) + '/' + str(len(d_base)-1))
-                        print('----...Prediction ' + str(k+1) + ' ' + typ + ' finished')
+                        print('----...Prediction ' + str(k+1) + ' ' + method + ' finished')
 
 """
 Confusion matrix code taken from scikit-learn.org
