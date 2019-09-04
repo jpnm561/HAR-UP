@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Oct 14 18:22:18 2018
-
 @author: José Pablo
 """
 
 from sklearn.ensemble import RandomForestClassifier as RndFC
 from sklearn import metrics as met
 import numpy as np
-import csv
 import os
 from createFolder import createFolder
 
@@ -32,9 +30,9 @@ def cleanLine(line, header = False):
 
 def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
     for cncpt in concept:
-        print(cnpt)
+        print(cncpt)
         for twnd in t_window:
-            print('--' + fldr[f])
+            print('--' + twnd)
             #The csv file with the features is read and stored in an array
             db_path = scr_dir + cncpt + '//' + twnd + '//PreSelectedFTS_' + twnd + '_' + cncpt + '.csv'
             d_base = []
@@ -44,8 +42,8 @@ def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
             d_base = txt.split('\n')
             #Every feature name is stored in an array
             features = []
-            temp = str(base[0])
-            feat = celanLine(temp,True)
+            temp = str(d_base[0])
+            feat = cleanLine(temp,True)
             for i in range(0,len(feat) - 1):
                 features.append(feat[i])
             
@@ -57,14 +55,14 @@ def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
                 #every string number must be parsed to float
                 for i in range(1,len(d_base)):
                     ln = str(d_base[i])
-                    q = celanLine(ln)
+                    q = cleanLine(ln)
                     p = []
                     for j in range(0,k+1):
                         if(j < len(q)-1):
                             if (q[j]!=' ')and(q[j]!=''):
                                 p.append(float(q[j]))
                             else:
-                                if i != len(base)-1:
+                                if i != len(d_base)-1:
                                     print('ERROR: ' + str(i+1))
                     if(q[len(features)]!=' ')and(q[len(features)]!=''):
                         y.append(float(q[len(features)]))
@@ -91,11 +89,10 @@ def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
                 count = 0
                 try:
                     w.write(st)
-                    srt = ""
-                    for i in range(1, len(base)):
+                    for i in range(1, len(d_base)):
                         count = i
-                        ln = str(base[i])
-                        q = celanLine(ln)
+                        ln = str(d_base[i])
+                        q = cleanLine(ln)
                         if (q[0]!=' ')and(q[0]!=''):
                             for j in range(0, k+1):
                                 w.write(q[j] + ',')
@@ -106,9 +103,9 @@ def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
                         print('------Unexpected error: ' + str(e))
                 w.close()      
                 print('------...Output file ' + str(k+1) + ' is done')  
-            print('----' + fldr[f] + ' finished')
+            print('----' + twnd + ' finished')
 
-def preSelScores(concept,t_window=['1&0.5', '2&1', '3&1.5',
+def preSelScores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
                 binary=True,
                 scr_dir=''):
     for cncpt in concept:
