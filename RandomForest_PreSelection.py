@@ -9,6 +9,7 @@ from sklearn import metrics as met
 import numpy as np
 import os
 from createFolder import createFolder
+import matplotlib.pyplot as plt
 
 """
 --------------------------------------------------------------------------------------------------
@@ -28,7 +29,7 @@ def cleanLine(line, header = False):
     arr = line.split(',')
     return arr
 
-def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
+def preSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
     for cncpt in concept:
         print(cncpt)
         for twnd in t_window:
@@ -73,7 +74,7 @@ def PreSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
                 #A numpy array is made with the inputs
                 X = np.array([np.array(z) for z in x])
                 #A random forest model is trained with the available data
-                clsf = RndFC()
+                clsf = RndFC(n_estimators=10)
                 clsf.fit(X,y)
                 #An output is gotten from the inputs
                 Y = clsf.predict(X)
@@ -125,8 +126,8 @@ def preSelScores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
                 d_base = r_txt.split('\n')
                 y_exp = []
                 y_prd = []
-                for j in range(1,len(base)):
-                    ln = str(base[j])
+                for j in range(1,len(d_base)):
+                    ln = str(d_base[j])
                     q = ln.split(',')
                     if(len(q) > 1)and((q[0]!='')and(q[0]!=' ')):
                         y_prd.append(float(q[-2]))
@@ -143,7 +144,7 @@ def preSelScores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
                 fsc = 100*met.f1_score(y_exp,y_prd,average=a_tag)
                 #recall
                 rec = 100*met.recall_score(y_exp,y_prd,average=a_tag)
-                
+                pres.append([acc,ppv,rec,fsc])
             #A csv file with the scores is written
             w = open(cncpt + '//' + twnd + '//PreSelectionReport_' + twnd + '_' + cncpt + '.csv', 'w')
             try:
@@ -182,6 +183,20 @@ def preSelScores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
             except Exception as e:
                 print('-----An error ocurred: ' + str(e))
             w.close()
+            xdata = [1 + i for i in range(0,len(os.listdir(path)))]
+            ydata = []
+            for j in range(0,4):
+                temp = []
+                for i in range(0,len(os.listdir(path))):
+                    temp.append(pres[i][j])
+                ydata.append(temp)
+            plt.plot(xdata, ydata[0], 'b',
+                     xdata, ydata[1],
+                     xdata, ydata[2], 'g',
+                     xdata, ydata[3], 'r')
+            plt.title('Pre-Selection Report ' + cncpt + ' ' +twnd)
+            plt.grid(True)
+            plt.show()
             print('---' + twnd + ' done')
 
 """
@@ -191,8 +206,8 @@ End of functions
 """
 
 def main():
-    concept = []
-    preSel_RF(concept)
+    concept = ['IMU_Head']
+    #preSel_RF(concept)
     preSelScores(concept)
     print('End of task')
 
