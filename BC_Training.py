@@ -46,8 +46,8 @@ def BC_Training(concept,
             #to ignore an empty row at the end of the file (if there is one)
             ignr = -1
             
-            for i in range(1,len(base)):
-                ln = base[i].split(',')
+            for i in range(1,len(d_base)):
+                ln = d_base[i].split(',')
                 #we check that we don't have an empty row and we make arrays to save the indexes for falls and the other activities
                 if (ln[0]!=' ')and(ln[0]!=''):
                     if int(ln[-1]) == 0:
@@ -59,8 +59,8 @@ def BC_Training(concept,
                         ignr = i
                     else:
                         #should an empty row that is not at the end exist
-                        print('There is an empty row!!! ' + str(i+1)+'/'+str(len(base)))
-                        print('*** ' + base[i])
+                        print('There is an empty row!!! ' + str(i+1)+'/'+str(len(d_base)))
+                        print('*** ' + d_base[i])
                         mflg = False
             if mflg:
                 print('----Falls = ' + str(len(falls)) + ' ; Other = ' + str(len(other)))
@@ -118,11 +118,11 @@ def BC_Training(concept,
                     #input (x) and output (y) arrays for validation
                     x_30 = []
                     y_30 = []
-                    for i in range(1,len(base)):
+                    for i in range(1,len(d_base)):
                         #we check that we are not dealing with an empty row (at the end)
                         if i != ignr:
                             #an arbitrary array with all the elements of a row
-                            q = base[i].split(',')
+                            q = d_base[i].split(',')
                             #an arbitrary array to contain all the inputs (features) in a row
                             p = []
                             for j in range(0, len(q) - 1):
@@ -153,10 +153,10 @@ def BC_Training(concept,
                     for method in methods:
                         #random forest
                         if method == 'RF':
-                            clsf = RndFC()
+                            clsf = RndFC(n_estimators=10)
                         #support vecctor machines
                         elif method == 'SVM':
-                            clsf = svm.SVC()
+                            clsf = svm.SVC(gamma='auto')
                         #multi-layer perceptron networks
                         elif method == 'MLP': 
                             clsf = ffp()
@@ -252,8 +252,8 @@ def writeFinal(w, score, arr, t_window, methods, ln_flg = False):
     w.write(socre + '\n')
     for method in methods:
         w.write(',' + method +',')
-    for i in range(0,len(twnd)):
-        w.write('\n' + twnd[i])
+    for i in range(0,len(t_window)):
+        w.write('\n' + t_window[i])
         for j in range(0,len(methods)):
             for k in range(0,2):
                 w.write(','+str(arr[i][j][k]))
