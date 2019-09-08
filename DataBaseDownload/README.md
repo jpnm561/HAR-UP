@@ -1,6 +1,6 @@
 # Data Base Download
 
-### Setting up the envioremt and Google Drive's API
+### Setting up the environment and Google Drive's API
 
 In here, you can find the tools to download our data base. This is particularly useful when attempting to download the complete data base, with the images (or just when trying to **download the images**).
  
