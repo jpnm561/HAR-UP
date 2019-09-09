@@ -13,8 +13,8 @@ from sklearn.neighbors import KNeighborsClassifier as KNN
 import numpy as np
 import random as rnd
 from createFolder import createFolder
-import itertools
 import matplotlib.pyplot as plt
+from scorePlots import plotScore, plot_confusion_matrix
 
 """
  -----------------------------------------------------------------------------------------------------
@@ -144,28 +144,7 @@ def MC_Training(concept,
                     w.close()
                     print('-----' + str(a) + '/' + str(len(d_base)-1))
                     print('----...Prediction ' + str(k+1) + ' ' + method + ' finished')
- 
-"""
-Confusion matrix code taken from scikit-learn.org
-https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html#sphx-glr-auto-examples-model-selection-plot-confusion-matrix-py
-"""
-def plot_confusion_matrix(cm,classes,normalize=True,title='Confusion matrix',cmap=plt.cm.Blues):
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:,np.newaxis]
-    plt.imshow(cm,interpolation='nearest',cmap=cmap)
-    plt.title(title)
-    plt.colorbar()
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks,classes,rotation=45)
-    plt.yticks(tick_marks,classes)
-    fmt = '.2f'
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]),range(cm.shape[1])):plt.text(j,i,format(cm[i,j],fmt),
-                                        horizontalalignment='center',
-                                        color='white' if cm[i,j] > thresh else 'black')
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
-    plt.tight_layout()
+
      
 def write_score(w, score, arr,ln_flg = False):
     w.write(score + '\n')
@@ -279,7 +258,7 @@ def MC_Scores(concept,
                     print('----ERROR: ' + str(e))
                 w.close()
                 
-                #Hacer gráficas
+                #Graphs
                 temp_arr = []
                 for e_y in range(0,12):
                     tmp_ln = []
@@ -314,7 +293,9 @@ def MC_Scores(concept,
         except Exception as e:
             print(e)
         w.close()
-        #Average matrix
+        #plotting the scores
+        plotScore([acc_e,ppv_e,rec_e,fsc_e],cncpt,t_window=t_window,methods=methods)
+        #Average confusion matrix
         for mthd in range(0,len(methods)):
             temp_arr = []
             method = methods[mthd]
