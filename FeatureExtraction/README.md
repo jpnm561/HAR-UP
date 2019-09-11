@@ -34,7 +34,9 @@ We have two available header formats:
 
 1. ![](header1.png)
 
-2. _image
+
+2. ![](header2.png)
+
 
 ## Choosing sensors and features
 
