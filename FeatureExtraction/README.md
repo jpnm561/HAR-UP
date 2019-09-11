@@ -1,5 +1,11 @@
 # FeatureExtraction.py
 
+## Instructions
+
+To use our feature extraction process, you'll have to download the python programs located in this folder. To begin extractiong features, just run the **featureExtraction.py** file.
+
+In the following sections, you'll find a more detailed explanation of how to use the available funcitons and what to expect from them.
+
 ## Directory arrangement
 
 The feature extraction program works by reading hte desired subject and activity trial files. This means that the program reads individual trial files and not the complete data set file. The directory arrangement is the following:
