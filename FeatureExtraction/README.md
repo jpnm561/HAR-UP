@@ -10,31 +10,34 @@ The feature extraction program works by reading hte desired subject and activity
 
 If the program is run as it is, the features will be stored in the same folder as the trial data files, and a single file (containign all features for a specified time window) will be created in the parent folder (where the Subject folders are stored).
 
-
-    ParentFolder\FeaturesTIMEWINDOW.csv
-                \Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
-                                          \Subject#Activity#Trial#FeaturesTIMEWINDOW.csv
-
-This is performed by running:
+  Code used:
 
     d_base_path = 'ParentFolder//'
     features_path = d_base_path
     extraction(d_base_path,features_path)
+
+  Output arrangement:
+  
+    ParentFolder\FeaturesTIMEWINDOW.csv
+                \Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
+                                          \Subject#Activity#Trial#FeaturesTIMEWINDOW.csv
+
     
  
 However, this can be easily changed to a different arrangement, such as:
 
 
-    ParentFolder1\Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
-    ParentFolder2\Subject#\Activity#\Trial#\Subject#Activity#Trial#FeaturesTIMEWINDOW.csv
-                 \FeaturesTIMEWINDOW.csv
-
-
-This is performed by running:
+  Code used:
 
     d_base_path = 'ParentFolder1//'
     features_path = 'ParentFolder2//'
     extraction(d_base_path,features_path)
+
+  Output arrangement:
+
+    ParentFolder1\Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
+    ParentFolder2\Subject#\Activity#\Trial#\Subject#Activity#Trial#FeaturesTIMEWINDOW.csv
+                 \FeaturesTIMEWINDOW.csv
 
 
 ## Choosing a time window
@@ -47,7 +50,7 @@ By default, features are calculated for three time windows:
 
 - 3&1.5
 
-These time windows can be altered when calling the function **extraction()**. In the following line there's an example, showing how to call the function to get features for two windows: 1 second windows, taken every 0.5 seconds; and 2 second windows taken every second.
+These time windows can be altered when calling the function **extraction()**. In the following line there's an example showing how to call the function to get features for two windows: 1 second windows, taken every 0.5 seconds; and 2 second windows taken every second.
 
 
     extraction(d_base_path,features_path,t_window = ['1&0.5','2&1'])
@@ -110,7 +113,37 @@ There are 13 default features obtained are:
 These sensors and features are all listed in **SFt_List.py**, and altering said file will allow you to choose which sensors and features to use. All feature calculations can be found in **fCalculation.py**.
 
 
-### Choosing different header formats
+## Choosing subjects, activities and trials
+
+By default, features are taken for **17 subjects**, each with **11 activities** and **3 trials** per activity. These numbers can be modified in the function's input. It is important to note that the progra mis built in a way that only allows to call these objects in order, so for example, if you wanted to get the features of subjects 1, 2, 3, 7, 10 and 11 you would have to call three times the function, and specifiy that you don't want a single output file (because this would erase the previous outputs).
+
+
+    extraction(d_base_path,features_path,n_sub=[1,3])
+    extraction(d_base_path,features_path,n_sub=[7,7])
+    extraction(d_base_path,features_path,n_sub=[10,11])
+    
+
+To recap:
+
+
+  For subjetcts:
+  
+    n_sub[start, end] 
+
+
+  For activities:
+  
+    n_act[start, end]
+
+
+  For trials:
+  
+    n_trl[start, end]
+
+It should be noted that **start** and **end** both refer to integer numbers.
+
+
+## Choosing different header formats
 
 We have two available header formats:
 
