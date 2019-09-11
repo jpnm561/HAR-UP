@@ -32,7 +32,7 @@ These time windows can be altered when calling the function **extraction()**
 
 We have two available header formats:
 
-1. _image
+1. ![](header1.png)
 
 2. _image
 
