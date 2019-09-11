@@ -5,10 +5,16 @@
 The feature extraction program works by reading hte desired subject and activity trial files. This means that the program reads individual trial files and not the complete data set file. The directory arrangement is the following:
 
 
-    Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
+    ParentFolder\Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
 
 
 If the default path to store the features is used, they will be stored in the same folder as the trial data files, and a single file (containign all features for a specified time window) will be created in the parent folder (where the Subject folders are stored).
+
+
+    ParentFolder\FeaturesTIMEWINDOW.csv
+                \Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
+                                          \Subject#Activity#Trial#FeaturesTIMEWINDOW.csv
+
 
 ## Choosing a time window
 
