@@ -118,9 +118,9 @@ These sensors and features are all listed in **SFt_List.py**, and altering said 
 By default, features are taken for **17 subjects**, each with **11 activities** and **3 trials** per activity. These numbers can be modified in the function's input. It is important to note that the progra mis built in a way that only allows to call these objects in order, so for example, if you wanted to get the features of subjects 1, 2, 3, 7, 10 and 11 you would have to call three times the function, and specifiy that you don't want a single output file (because this would erase the previous outputs).
 
 
-    extraction(d_base_path,features_path,n_sub=[1,3])
-    extraction(d_base_path,features_path,n_sub=[7,7])
-    extraction(d_base_path,features_path,n_sub=[10,11])
+    extraction(d_base_path,features_path, n_sub=[1,3], single_f=False)
+    extraction(d_base_path,features_path, n_sub=[7,7], single_f=False)
+    extraction(d_base_path,features_path, n_sub=[10,11], single_f=False)
     
 
 To recap:
