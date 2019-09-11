@@ -32,10 +32,24 @@ These time windows can be altered when calling the function **extraction()**
 
 We have two available header formats:
 
-1. ![](header1.png)
+1.
+
+  ![](header1.png)
+  
+  
+  To get this header the **extraction** function should just be called as usual:
+  
+  
+    extraction (d_base_path,features_path)
 
 
 2. ![](header2.png)
+
+
+  This header requires a flag to specify that timestamps are wanted. To get it, the **extraction** function should be called as:
+  
+  
+    extraction (d_base_path,features_path, t_stamp = True)
 
 
 ## Choosing sensors and features
