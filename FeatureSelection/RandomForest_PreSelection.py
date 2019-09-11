@@ -106,7 +106,7 @@ def preSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
                 print('------...Output file ' + str(k+1) + ' is done')  
             print('----' + twnd + ' finished')
 
-def preSelScores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
+def preSel_Scores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
                 binary=True,
                 scr_dir=''):
     for cncpt in concept:
@@ -207,8 +207,8 @@ End of functions
 
 def main():
     concept = ['IMU_Head']
-    #preSel_RF(concept)
-    preSelScores(concept)
+    preSel_RF(concept)
+    preSel_Scores(concept)
     print('End of task')
 
 if __name__=="__main__":
