@@ -128,17 +128,17 @@ To recap:
 
   For subjetcts:
   
-    n_sub[start, end] 
+    n_sub = [start, end] 
 
 
   For activities:
   
-    n_act[start, end]
+    n_act = [start, end]
 
 
   For trials:
   
-    n_trl[start, end]
+    n_trl = [start, end]
 
 It should be noted that **start** and **end** both refer to integer numbers.
 
