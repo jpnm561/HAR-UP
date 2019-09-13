@@ -29,7 +29,7 @@ def cleanLine(line, header = False):
     arr = line.split(',')
     return arr
 
-def preSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
+def sel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
     for cncpt in concept:
         print(cncpt)
         for twnd in t_window:
@@ -106,7 +106,7 @@ def preSel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
                 print('------...Output file ' + str(k+1) + ' is done')  
             print('----' + twnd + ' finished')
 
-def preSel_Scores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
+def sel_Scores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
                 binary=True,
                 scr_dir=''):
     for cncpt in concept:
@@ -206,9 +206,9 @@ End of functions
 """
 
 def main():
-    concept = ['IMU_Head']
-    preSel_RF(concept)
-    preSel_Scores(concept)
+    concept = []
+    sel_RF(concept)
+    sel_Scores(concept)
     print('End of task')
 
 if __name__=="__main__":
