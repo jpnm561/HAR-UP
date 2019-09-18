@@ -6,7 +6,7 @@ In this repository you'll be able to find the python programs used for the Unive
  
 We have programs to help downloading our database and for feature selection, training and validation.
 
-## How to use the programs
+## Our process
 
 The available programs were used in the following manner and order:
 
