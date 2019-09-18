@@ -12,7 +12,7 @@ The available programs were used in the following manner and order:
 
 1. First of all, the desired features were placed in a csv file.
 
-2. A (preliminar) feature selection process was made. To select the features, Weka *add citation* was used, with attribute selection using Explorer mode and 10 folds for the selection, with the following models:
+2. A (preliminar) feature selection process was made. To select the features, [Weka](https://www.cs.waikato.ac.nz/~ml/weka/index.html) was used, with attribute selection using Explorer mode and 10 folds for the selection, with the following models:
 
 					-CfsSubsetEval_BestFirst (with ZeroR set as the classifier)
 					
