@@ -33,6 +33,12 @@ Features were calculated using three different time-windows: 1&0.5, 2&1 and 3&1.
 ![](twnd.png)
 
 
+Throught the programs, you'll be able to select which time-windows to use with the variable:
+
+    t-window
+
+This is a string array, stating the window-length and period for each time-window (e.g. such as '1&0.5').
+
 ### Methods
 
 
@@ -44,6 +50,14 @@ Trainign and validation were performed using four different classification model
  - K-Nearest Neighbour (KNN)
 
 These were all taken from [scikit-learn](https://scikit-learn.org/stable/).
+
+
+You'll be able to choose which one of these to use when modifying the following variable:
+
+
+    methods
+
+This is a string array, stating the methods with theri abbreviations (e.g. 'RF').
 
 ## Our process
 
