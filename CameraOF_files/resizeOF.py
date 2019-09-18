@@ -10,19 +10,8 @@ import numpy as np
 from numpy import genfromtxt
 import os
 from createFolder import createFolder
+from progressBar import progressBar
 import sys
-
-#Progress bar base code taken from Nils Kohlmey's stack overflow contribution
-#https://stackoverflow.com/questions/6169217/replace-console-output-in-python
-def progressBar(name, value, endvalue, bar_length = 50, width = 1):
-        percent = float(value) / endvalue
-        arrow = '|' * int(round(percent*bar_length))
-        spaces = '-' * (bar_length - len(arrow))
-        sys.stdout.write("\r{0: <{1}}: [{2}]{3}%".format(\
-                         name, width, arrow + spaces, int(round(percent*100))))
-        sys.stdout.flush()
-        if value == endvalue:        
-             sys.stdout.write('\n')
 
 #A function to replace dashes in the timestamps with colons
 def tstGT(st):
