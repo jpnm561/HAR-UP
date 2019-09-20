@@ -23,7 +23,7 @@ Throught the programs, you'll find the following varialbes refering to these con
     n_trl
 
 
-These are all integer arrayas, indicating the first and last subject, activity or trial to be used when calling a funtction.
+These are all integer arrays, indicating the first and last subject, activity or trial to be used when calling a funtction.
 
 ### Time-windows
 
