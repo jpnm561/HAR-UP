@@ -121,6 +121,6 @@ After running the program, the new files in the directory will be:
                                     \AvgConfusionMatrix_2&1_RF_IMU-RightPocket.jpg
                                     \Score_2&1_RF_IMU-RightPocket.csv
                                     \RF\
-                                    \Result_2&1_RF_1.csv
-                                    ...
-                                    \Result_2&1_RF_10.csv
+                                       \Result_2&1_RF_1.csv
+                                       ...
+                                       \Result_2&1_RF_10.csv
