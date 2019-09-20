@@ -57,7 +57,22 @@ You'll be able to choose which one of these to use when modifying the following 
 
     methods
 
-This is a string array, stating the methods with theri abbreviations (e.g. 'RF').
+This is a string array, stating the methods with their abbreviations (e.g. 'RF').
+
+
+### Concepts
+
+
+For feature selection, training and validation different sensor combinations (or experiments) were taken into account. To keep order, we started using each experiment's name (the **concept**) as a differentiator.
+
+
+You'll be able to select which experiments or concepts you are working with at the moment by modifying the variable:
+
+
+    concept
+
+This is a string array, stating the used experiments (e.g. 'IMU_Head_IR' could be used to name an experiment consisting of IMU, the ECG and infrared sensors).
+
 
 ## Our process
 
