@@ -19,3 +19,13 @@ To begin selecting features, [Weka](https://www.cs.waikato.ac.nz/~ml/weka/index.
 
 
 This program takes the pre-selected features csv file and trains a randomm forest model with all features. After trainig, the model is fed the features (adding one each time) and evaluates the results. A plot of the resulting scroes (as well as these in a csv file) is produced. Using the plots, one can decide how many of the pre-selected features are relevant to the process.
+
+### Direcotory arrangement
+
+
+
+### Concept selection
+
+It is necessary for the user to state the concept (or experiment) that is being performed. This refers to a
+
+(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
