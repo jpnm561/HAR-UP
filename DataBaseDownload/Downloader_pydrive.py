@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Aug 22 18:39:11 2019
-
 @author: José Pablo
 """
 
@@ -9,7 +8,7 @@ Created on Thu Aug 22 18:39:11 2019
 #pip install PyDrive
 #Having the pDrive_functions.py file nearby
 
-from pydrive.auth import GoogleAuth, AuthenticationError, RefreshError
+from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 from pDrive_functions import fileFinder, fileDownloader
 from createFolder import createFolder
@@ -49,7 +48,7 @@ def refresh_gauth(gauth, drive):
     return gauth, drive, flg
 
 #A function that handles downloads
-def download(f_name,p_id,gauth,drive):
+def download(path,f_name,p_id,gauth,drive):
     gauth, drive, v_flg = refresh_gauth(gauth,drive)
     if v_flg:
         return gauth, drive, True
@@ -57,9 +56,9 @@ def download(f_name,p_id,gauth,drive):
     gauth, drive, v_num = refresh_gauth(gauth,drive)
     if v_flg:
         return gauth, drive, True
-    print('\t\t\t\tDownloading:' + f_name)
-    fileDownloader(f_name,p_id,path,drive)
-    print('\t\t\t\t---' + f_name + 'download complete')
+    print('--------Downloading:' + f_name)
+    fileDownloader(f_name,f_id,path,drive)
+    print('----------' + f_name + ' download complete')
     return gauth, drive, False
 
 #A function to handle feature downloads
@@ -110,7 +109,7 @@ def featureDownload(gral = '',
                     #Feature download (IMU Thinkgear IR) csv
                     if csv_files:
                         f_name = sub+act+trl + 'Features' + t_window + '.csv'
-                        gauth, drive, v_flg = download(f_name,t_id,gauth, drive)
+                        gauth, drive, v_flg = download(path,f_name,t_id,gauth, drive)
                         if v_flg:
                             break
                         s_id = fileFinder(sub,'1ogVoukp6eEW7Chxo8LdV0vrpwEla5vAS',drive)
@@ -143,7 +142,7 @@ def dataBaseDownload(gral = '',
     p_id = '1AItqj3Ue-iv7NSdR7Qta1Ez4spRjCo58'
     for i in range(n_sub[0],n_sub[1] + 1):
         sub = 'Subject' + str(i)
-        print('\t'+sub)
+        print('--'+sub)
         gauth, drive, v_flg = refresh_gauth(gauth,drive)
         if v_flg:
             break
@@ -154,7 +153,7 @@ def dataBaseDownload(gral = '',
             break
         for j in range(n_act[0],n_act[1] + 1):
             act = 'Activity' + str(j)
-            print('\t\t'+act)
+            print('S'+str(i)+'--'+act)
             gauth, drive, v_flg = refresh_gauth(gauth,drive)
             if v_flg:
                 break
@@ -163,7 +162,7 @@ def dataBaseDownload(gral = '',
                 if v_flg:
                     break
                 trl = 'Trial' + str(k)
-                print('\t\t\t'+trl)
+                print('S'+str(i)+'-A'+str(j)+'--'+trl)
                 path = gral + '//' + sub + '//' + act + '//' + trl + '//'
                 createFolder(path)
                 f_name = sub+act+trl + '.csv'
@@ -171,12 +170,12 @@ def dataBaseDownload(gral = '',
                 t_id = fileFinder(trl,a_id,drive)
                 if v_flg:
                     break
-                gauth, drive, v_flg = download(f_name,t_id,gauth, drive)
+                gauth, drive, v_flg = download(path,f_name,t_id,gauth, drive)
                 if(cameras):
                     for l in range(n_cam[0],n_cam[1] + 1):
                         cam = 'Camera' + str(l)
                         f_name = sub+act+trl+cam+'.zip'
-                        gauth, drive, v_flg = download(f_name,t_id,gauth, drive)
+                        gauth, drive, v_flg = download(path,f_name,t_id,gauth, drive)
     if v_flg:
         print('An error ocurred while connecting to Google Drive')
 
@@ -187,9 +186,9 @@ End of functions
 """
 
 def main():
-    parent_dir = ''
-    dataBaseDownload(parent_dir)
-    featureDownload(parent_dir)
+    parent_dir = 'HAR_DataBase'
+    dataBaseDownload(parent_dir,n_sub=[1,1])
+    featureDownload(parent_dir,n_sub=[1,1])
     
 if __name__=="__main__":
     main()
