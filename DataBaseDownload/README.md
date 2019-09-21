@@ -156,13 +156,13 @@ By default, all csv and zip files (from both cameras) are downloaded. However, y
   Or if you only want to download one of the camera's you can input:
 
    - - For Camera 1 (side view):
- 
+  ``` 
           dataBaseDownload(csv_files=False, n_cam=[1,1])
-       
+  ```  
    - - For Camera 2 (front view):
- 
+   ```
           dataBaseDownload(csv_files=False, n_cam=[2,2])
-
+   ```
 
 ### Downloading Features
 
@@ -204,14 +204,14 @@ By default, all csv files are downloaded (zipped OF files are avoided on purpose
 
  If you would like to choose only some of the time-windows, you can modify the **t_window** array. For example, if you only wanted to download  *1 second windows taken every 0.5 seconds* and *2 second windows taken every second*, you can input:
 
-      downloadFeatures(path,t_window = ['1&0.5','2&1'])
+      featureDownload('ParentFolder//',t_window = ['1&0.5','2&1'])
 
   Outputs:
 
-     ParentFolder\
-                 \Subject#\
-                          \Activity$\
-                                    \Trial%\
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
                                             \Subject#Activity$Trial%Features1&0.5.csv
                                             \Subject#Activity$Trial%Features2&1.csv
                                             \CameraFeaturesSubject#Activity$Trial%.csv
@@ -219,5 +219,70 @@ By default, all csv files are downloaded (zipped OF files are avoided on purpose
                                             \Subject#Activity$Trial%CameraFeatures2&1.csv
 
 
+- Avoiding features taken from sensor data
 
+      featureDownload('ParentFolder//', csv_files=False)
 
+  Outputs:
+
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
+                                            \CameraFeaturesSubject#Activity$Trial%.csv
+                                            \Subject#Activity$Trial%CameraFeatures1&0.5.csv
+                                            \Subject#Activity$Trial%CameraFeatures2&1.csv
+                                            \Subject#Activity$Trial%CameraFeatures3&1.5.csv
+
+- Avoiding resized camera OF files:
+
+      featureDownload('ParentFolder//', cameras=False)
+
+  Outputs:
+
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
+                                            \Subject#Activity$Trial%Features1&0.5.csv
+                                            \Subject#Activity$Trial%Features2&1.csv
+                                            \Subject#Activity$Trial%Features3&1.5.csv
+                                            \Subject#Activity$Trial%CameraFeatures1&0.5.csv
+                                            \Subject#Activity$Trial%CameraFeatures2&1.csv
+                                            \Subject#Activity$Trial%CameraFeatures3&1.5.csv
+
+- Avoiding features taken from the resized OF camera files:
+
+      featureDownload('ParentFolder//', feat_cam_OF=False)
+
+  Outputs:
+
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
+                                            \Subject#Activity$Trial%Features1&0.5.csv
+                                            \Subject#Activity$Trial%Features2&1.csv
+                                            \Subject#Activity$Trial%Features3&1.5.csv
+
+- Allowing Camera OF zip files:
+
+      featureDownload('ParentFolder//', Complete_OF=True)
+
+  Outputs:
+
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
+                                            \Subject#Activity$Trial%Features1&0.5.csv
+                                            \Subject#Activity$Trial%Features2&1.csv
+                                            \Subject#Activity$Trial%Features3&1.5.csv
+                                            \CameraFeaturesSubject#Activity$Trial%.csv
+                                            \Subject#Activity$Trial%CameraFeatures1&0.5.csv
+                                            \Subject#Activity$Trial%CameraFeatures2&1.csv
+                                            \Subject#Activity$Trial%CameraFeatures3&1.5.csv
+                                            \Subject#Activity$Trial%Camera1_OF.zip
+                                            \Subject#Activity$Trial%Camera2_OF.zip
+                                
+   - - You can choose which camera data to download by modifying the **n_cam** array variable. See the example section in the **Downloading the Data Set** section for more information.
