@@ -157,16 +157,16 @@ By default, all csv and zip files (from both cameras) are downloaded. However, y
 
    - - For Camera 1 (side view):
  
-         dataBaseDownload(csv_files=False, n_cam=[1,1]
+          dataBaseDownload(csv_files=False, n_cam=[1,1])
        
    - - For Camera 2 (front view):
  
-         dataBaseDownload(csv_files=False, n_cam=[2,2]
+          dataBaseDownload(csv_files=False, n_cam=[2,2])
 
 
 ### Downloading Features
 
-Uding this program, you can select which feature elements to download. These all have synchonized timestamps, a tag indicating the current activity (per timestamp). The feature data set can be separated in:
+When using this program, you can select which feature elements to download. These all have synchonized timestamps, a tag indicating the current activity (per timestamp). The feature data set can be separated in:
 
 - csv files containing features from the sensor data (5 IMUs, an ECG and 6 infrared) taken in different time-windows. These can be found for 1 second windows taken every 0.5 seconds, 2 second windows taken every second, and 3 second windows taken every 1.5 seconds.
 
@@ -208,10 +208,10 @@ By default, all csv files are downloaded (zipped OF files are avoided on purpose
 
   Outputs:
 
-    ParentFolder\
-                \Subject#\
-                         \Activity$\
-                                   \Trial%\
+     ParentFolder\
+                 \Subject#\
+                          \Activity$\
+                                    \Trial%\
                                             \Subject#Activity$Trial%Features1&0.5.csv
                                             \Subject#Activity$Trial%Features2&1.csv
                                             \CameraFeaturesSubject#Activity$Trial%.csv
