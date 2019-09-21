@@ -1,6 +1,6 @@
 # Data Base Download
 
-### Setting up the environment and Google Drive's API
+## Setting up the environment and Google Drive's API
 
 In here, you can find the tools to download our data base. This is particularly useful when attempting to download the complete data base, with the images (or just when trying to **download the images**).
  
@@ -35,7 +35,7 @@ terminal:
 Once this is done, you should be able to use the programs in this folder without issues.
 
 
-### The programs
+## The programs
 
 - **Downloader_pydrive.py**: The program used to download the data base. This can be used to download the synchronized csv files, the zipped images, the features csv files, the camera optical flow files (zipped) and the cameras' features (csv files).
 
@@ -56,12 +56,22 @@ In the following sections, you'll find a more detailed explanation of how to use
 
 Our downloader arranges the downloaded files in the following manner:
 
-    downloader(path)
+    path = 'ParentFolder//'
+    
+    dataBaseDownload(path)
+    featureDownload(path)
 
   Outputs:
 
-    ParentFolder\Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
+    ParentFolder\
+                \Subject#\
+                         \Activity#\
+                                   \Trial#\
+                                          \downloadedFile(1)
+                                          ...
+                                          \donwnloadedFile(i)
 
+## Choosing which files to download
 
 ### Data Set
 
@@ -76,27 +86,53 @@ By default, all csv and zip files (from both cameras) are downloaded. However, y
 
 ##### Example
 
-Running
+- Default download
 
-    dataBaseDownload(csv_files = False)
+      dataBaseDownload('ParentFolder//')
 
-would indicate that no csv files are to be downloades, and only the zipped images would be downloaded.
+  Outputs:
 
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
+                                            \Subject#Activity$Trial%.csv
+                                            \Subject#Activity$Trial%Camera1.zip
+                                            \Subject#Activity$Trial%Camera2.zip
 
-If you don't want to download any images, the function can be called as:
+- Avoiding csv files
 
-    dataBaseDownload(cameras = False)
-
-
-Or if you only want to download one of the camera's you can input:
-
- - For Camera 1 (side view):
+ Running the next line would indicate that no csv files are to be downloaded, and only the zipped images would be downloaded. 
  
-       dataBaseDownload(csv_files=False, n_cam=[1,1]
+      dataBaseDownload('ParentFolder//', csv_files = False)
+
+  Outputs:
+
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
+                                            \Subject#Activity$Trial%Camera1.zip
+                                            \Subject#Activity$Trial%Camera2.zip
+
+ - Avoiding images
+
+  If you don't want to download any images, the function can be called as:
+
+      dataBaseDownload('ParentFolder//', cameras = False)
+
+
+ - Choosing a camera
+ 
+  Or if you only want to download one of the camera's you can input:
+
+   - For Camera 1 (side view):
+ 
+         dataBaseDownload(csv_files=False, n_cam=[1,1]
        
- - For Camera 2 (front view):
+   - For Camera 2 (front view):
  
-       dataBaseDownload(csv_files=False, n_cam=[2,2]
+         dataBaseDownload(csv_files=False, n_cam=[2,2]
 
 
 ### Features
