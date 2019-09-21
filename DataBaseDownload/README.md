@@ -65,6 +65,38 @@ Our downloader arranges the downloaded files in the following manner:
 
 ### Data Set
 
+With our downloader, you'll be able to choose which elements from our data set to download. These all have synchonized timestamps and are tagged, showing which activity is happening for every timestamp. The data set can be separated in:
+
+- csv files containing sensor data from 5 IMUs, an ECG and 6 infrared.
+
+- zip files containing picture-frames from recorded video, from two cameras (side and front view).
+
+
+By default, all csv and zip files (from both cameras) are downloaded. However, you can modify this when calling the **dataBaseDownload** function.
+
+##### Example
+
+Running
+
+    dataBaseDownload(csv_files = False)
+
+would indicate that no csv files are to be downloades, and only the zipped images would be downloaded.
+
+
+If you don't want to download any images, the function can be called as:
+
+    dataBaseDownload(cameras = False)
+
+
+Or if you only want to download one of the camera's you can input:
+
+ - For Camera 1 (side view):
+ 
+       dataBaseDownload(csv_files=False, n_cam=[1,1]
+       
+ - For Camera 2 (front view):
+ 
+       dataBaseDownload(csv_files=False, n_cam=[2,2]
 
 
 ### Features
