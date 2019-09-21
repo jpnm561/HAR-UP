@@ -126,11 +126,11 @@ By default, all csv and zip files (from both cameras) are downloaded. However, y
  
   Or if you only want to download one of the camera's you can input:
 
-   -- For Camera 1 (side view):
+   - - For Camera 1 (side view):
  
          dataBaseDownload(csv_files=False, n_cam=[1,1]
        
-   -- For Camera 2 (front view):
+   - - For Camera 2 (front view):
  
          dataBaseDownload(csv_files=False, n_cam=[2,2]
 
