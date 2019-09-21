@@ -73,6 +73,35 @@ Our downloader arranges the downloaded files in the following manner:
 
 ## Choosing which files to download
 
+### Choosing subjects, activities and trials
+
+By default, downloads are done for the **17 subjects**, each with **11 activities** and **3 trials** per activity. However, the number of subjects, activities and trials you wish to download can be modified when calling the **dataBaseDownload** and **featureDownload** functions. It is important to note that the program is built in a way that only allows to call these objects in order, so for example, if you wanted to get the data set for subjects 1, 2, 3, 7, 10 and 11 you would have to call three times the function:
+
+
+    dataBaseDownload(path, n_sub=[1,3])
+    dataBaseDownload(path, n_sub=[7,7])
+    dataBaseDownload(path, n_sub=[10,11])
+
+
+To make changes, you can modify...
+
+
+  ...for subjetcts:
+  
+    n_sub = [start, end] 
+
+
+  ...for activities:
+  
+    n_act = [start, end]
+
+
+  ...for trials:
+  
+    n_trl = [start, end]
+
+It should be noted that **start** and **end** both refer to integer numbers.
+
 ### Data Set
 
 With our downloader, you'll be able to choose which elements from our data set to download. These all have synchonized timestamps and are tagged, showing which activity is happening for every timestamp. The data set can be separated in:
@@ -84,7 +113,7 @@ With our downloader, you'll be able to choose which elements from our data set t
 
 By default, all csv and zip files (from both cameras) are downloaded. However, you can modify this when calling the **dataBaseDownload** function.
 
-##### Example
+#### Example
 
 - Default download
 
@@ -162,32 +191,5 @@ This will result in:
                                           \Subject#Activity#Trial#Features2&1.csv
 
 
-## Choosing subjects, activities and trials
 
-By default, features are taken for **17 subjects**, each with **11 activities** and **3 trials** per activity. These numbers can be modified in the function's input. It is important to note that the program is built in a way that only allows to call these objects in order, so for example, if you wanted to get the features of subjects 1, 2, 3, 7, 10 and 11 you would have to call three times the function, and specifiy that you don't want a single output file (because this would erase the previous outputs).
-
-
-    extraction(d_base_path,features_path, n_sub=[1,3], single_f=False)
-    extraction(d_base_path,features_path, n_sub=[7,7], single_f=False)
-    extraction(d_base_path,features_path, n_sub=[10,11], single_f=False)
-    
-
-To recap:
-
-
-  For subjetcts:
-  
-    n_sub = [start, end] 
-
-
-  For activities:
-  
-    n_act = [start, end]
-
-
-  For trials:
-  
-    n_trl = [start, end]
-
-It should be noted that **start** and **end** both refer to integer numbers.
 
