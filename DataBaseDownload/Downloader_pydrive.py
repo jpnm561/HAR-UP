@@ -186,9 +186,9 @@ End of functions
 """
 
 def main():
-    parent_dir = 'HAR_DataBase'
-    dataBaseDownload(parent_dir,n_sub=[1,1])
-    featureDownload(parent_dir,n_sub=[1,1])
+    parent_dir = ''
+    dataBaseDownload(parent_dir)
+    featureDownload(parent_dir)
     
 if __name__=="__main__":
     main()
