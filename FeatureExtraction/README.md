@@ -8,10 +8,14 @@ In the following sections, you'll find a more detailed explanation of how to use
 
 ## Directory arrangement
 
-The feature extraction program works by reading hte desired subject and activity trial files. This means that the program reads individual trial files and not the complete data set file. The directory arrangement is the following:
+The feature extraction program works by reading hte desired subject and activity trial files. This means that the program reads individual trial files and not the complete data set file. The directory arrangement required to tun this program is the following:
 
 
-    ParentFolder\Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
+    ParentFolder\
+                \Subject#\
+                         \Activity$\
+                                   \Trial%\
+                                          \Subject#Activity$Trial%.csv
 
 
 If the program is run as it is, the features will be stored in the same folder as the trial data files, and a single file (containign all features for a specified time window) will be created in the parent folder (where the Subject folders are stored).
@@ -24,9 +28,13 @@ If the program is run as it is, the features will be stored in the same folder a
 
   Output arrangement:
   
-    ParentFolder\FeaturesTIMEWINDOW.csv
-                \Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
-                                          \Subject#Activity#Trial#FeaturesTIMEWINDOW.csv
+    ParentFolder\
+                \FeaturesTIMEWINDOW.csv
+                \Subject#\
+                         \Activity$\
+                                   \Trial%\
+                                          \Subject#Activity$Trial%.csv
+                                          \Subject#Activity$Trial%FeaturesTIMEWINDOW.csv
 
     
  
@@ -41,9 +49,17 @@ However, this can be easily changed to a different arrangement, such as:
 
   Output arrangement:
 
-    ParentFolder1\Subject#\Activity#\Trial#\Subject#Activity#Trial#.csv
-    ParentFolder2\Subject#\Activity#\Trial#\Subject#Activity#Trial#FeaturesTIMEWINDOW.csv
+    ParentFolder1\
+                 \Subject#\
+                          \Activity$\
+                                    \Trial%\
+                                           \Subject#Activity$Trial%.csv
+    ParentFolder2\
                  \FeaturesTIMEWINDOW.csv
+                 \Subject#\
+                          \Activity$\
+                                    \Trial%\
+                                           \Subject#Activity$Trial%FeaturesTIMEWINDOW.csv
 
 
 ## Choosing a time window
