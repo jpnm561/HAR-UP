@@ -102,7 +102,7 @@ To make changes, you can modify...
 
 It should be noted that **start** and **end** both refer to integer numbers.
 
-### Data Set
+### Downloading the Data Set
 
 With our downloader, you'll be able to choose which elements from our data set to download. These all have synchonized timestamps and are tagged, showing which activity is happening for every timestamp. The data set can be separated in:
 
@@ -164,31 +164,59 @@ By default, all csv and zip files (from both cameras) are downloaded. However, y
          dataBaseDownload(csv_files=False, n_cam=[2,2]
 
 
-### Features
+### Downloading Features
+
+Uding this program, you can select which feature elements to download. These all have synchonized timestamps, a tag indicating the current activity (per timestamp). The feature data set can be separated in:
+
+- csv files containing features from the sensor data (5 IMUs, an ECG and 6 infrared) taken in different time-windows. These can be found for 1 second windows taken every 0.5 seconds, 2 second windows taken every second, and 3 second windows taken every 1.5 seconds.
+
+- csv files containing optical flow files (for both cameras in a single file) that have been resized to a 20x20 pixel size.
+
+- csv files containig the mean (a single feature) taken from the resized OF camera files in different time-windows. These can be found for 1 second windows taken every 0.5 seconds, 2 second windows taken every second, and 3 second windows taken every 1.5 seconds.
+
+- zip files containing optical flow files taken from both cameras. These files consist of more zip files with csv files that show changes in *u* and *v* for each time-stamp. You can download data from both cameras (side and front view).
 
 
-
-#### Choosing a time window
-
-By default, features are calculated for three time windows:
-
-- 1&0.5
-
-- 2&1
-
-- 3&1.5
-
-These time windows can be altered when calling the function **downloadFeatures()**. In the following line there's an example showing how to call the function to get features for two windows: 1 second windows, taken every 0.5 seconds; and 2 second windows taken every second.
+By default, all csv files are downloaded (zipped OF files are avoided on purpose). However, you can modify this when calling the **featureDownload** function.
 
 
-    downloadFeatures(path,t_window = ['1&0.5','2&1'])
+#### Example
 
+- Default download
 
-This will result in:
+      featureDownload('ParentFolder//')
 
+  Outputs:
 
-    ParentFolder\Subject#\Activity#\Trial#\Subject#Activity#Trial#Features1&0.5.csv
-                                          \Subject#Activity#Trial#Features2&1.csv
+      ParentFolder\
+                  \Subject#\
+                           \Activity$\
+                                     \Trial%\
+                                            \Subject#Activity$Trial%Features1&0.5.csv
+                                            \Subject#Activity$Trial%Features2&1.csv
+                                            \Subject#Activity$Trial%Features3&1.5.csv
+                                            \CameraFeaturesSubject#Activity$Trial%.csv
+                                            \Subject#Activity$Trial%CameraFeatures1&0.5.csv
+                                            \Subject#Activity$Trial%CameraFeatures2&1.csv
+                                            \Subject#Activity$Trial%CameraFeatures3&1.5.csv
+
+- Choosing time-windows
+
+ If you would like to choose only some of the time-windows, you can modify the **t_window** array. For example, if you only wanted to download  *1 second windows taken every 0.5 seconds* and *2 second windows taken every second*, you can input:
+
+      downloadFeatures(path,t_window = ['1&0.5','2&1'])
+
+  Outputs:
+
+    ParentFolder\
+                \Subject#\
+                         \Activity$\
+                                   \Trial%\
+                                            \Subject#Activity$Trial%Features1&0.5.csv
+                                            \Subject#Activity$Trial%Features2&1.csv
+                                            \CameraFeaturesSubject#Activity$Trial%.csv
+                                            \Subject#Activity$Trial%CameraFeatures1&0.5.csv
+                                            \Subject#Activity$Trial%CameraFeatures2&1.csv
 
 
 
