@@ -55,7 +55,37 @@ def main():
 
 ### Choosing subjects, activities, trials and cameras
 
+By default, the program is run for **17 subjects**, each with **11 activities**, **3 trials** per activity and **2 cameras** for every trial. These numbers can be modified in the function's input. It is important to note that the program is built in a way that only allows to call these objects in order, so for example, if you wanted to get the features of subjects 1, 2, 3, 7, 10 and 11 you would have to call three times the function, and specifiy that you don't want a single output file (because this would erase the previous outputs).
 
+
+    camOF_joiner(OF_path,resize_path, n_sub=[1,3], single_f=False)
+    camOF_joiner(OF_path,resize_path, n_sub=[7,7], single_f=False)
+    camOF_joiner(OF_path,resize_path, n_sub=[10,11], single_f=False)
+    
+
+To recap:
+
+
+  For subjetcts:
+  
+    n_sub = [start, end] 
+
+
+  For activities:
+  
+    n_act = [start, end]
+
+
+  For trials:
+  
+    n_trl = [start, end]
+    
+    
+  For cameras:
+  
+    n_cam = [start, end]
+
+It should be noted that **start** and **end** both refer to integer numbers. Another important consideration, is that changing the camera number does not change the amount of output files, but only takes one camera into consideration (side camera or front camera).
 
 ## Tagging the data
 
