@@ -11,7 +11,7 @@ Created on Thu Aug 22 18:39:11 2019
 
 from pydrive.auth import GoogleAuth, AuthenticationError, RefreshError
 from pydrive.drive import GoogleDrive
-from pDrivefunctions import fileFinder, fileDownloader
+from pDrive_functions import fileFinder, fileDownloader
 from createFolder import createFolder
 
 
