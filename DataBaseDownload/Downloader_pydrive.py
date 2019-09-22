@@ -58,7 +58,7 @@ def download(path,f_name,p_id,gauth,drive):
         return gauth, drive, True
     print('--------Downloading:' + f_name)
     fileDownloader(f_name,f_id,path,drive)
-    print('----------' + f_name + ' download complete')
+    print('----------Download complete')
     return gauth, drive, False
 
 #A function to handle feature downloads
