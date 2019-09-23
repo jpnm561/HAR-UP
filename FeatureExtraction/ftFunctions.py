@@ -29,7 +29,7 @@ def createHeader(sensorList, ftList,t_stamp):
         for feature in ftList:
             if h_start:
                 final[0].append('')
-            else:
+            elif t_stamp:
                 h_start = True
             final[0 + dif].append(sensor + feature)
     final[0 + dif].append('Subject')
