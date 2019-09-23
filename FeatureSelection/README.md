@@ -18,17 +18,11 @@ To begin selecting features, [Weka](https://www.cs.waikato.ac.nz/~ml/weka/index.
 ## RandomForest_Selection.py
 
 
-This program takes the pre-selected features csv file and trains a randomm forest model with all features. After trainig, the model is fed the features (adding one each time) and evaluates the results. A plot of the resulting scroes (as well as these in a csv file) is produced. Using the plots, one can decide how many of the pre-selected features are relevant to the process.
-
-### Concept selection
-
-It is necessary for the user to state the concept (or experiment) that is being performed. This refers to a
-
-(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
+This program takes the pre-selected features csv file and trains a random forest model with all features. After training, the model is fed features (adding one each time) and evaluates the results. A plot of the resulting scores (as well as these in a csv file) is produced. Using the plots, one can decide how many of the pre-selected features are relevant to the process.
 
 ### Direcotory arrangement
 
-This program works by reading the pre-selected features file. This csv file only contains features and their respective tag (the Subject, Activity and Trial columns are missing in this file). These programs were made with the assumption that several experiments (the _concept_) will be performed, and therfore work with the following directory configuration:
+This program works by reading the pre-selected features file. This csv file only contains features and their respective tag (the Subject, Activity and Trial columns are missing in this file). These programs were made with the assumption that several experiments (the _concept_) will be performed, and therfore works with the following directory configuration:
 
 
     CONCEPT\
