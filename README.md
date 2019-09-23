@@ -35,7 +35,7 @@ Features were calculated using three different time-windows: 1&0.5, 2&1 and 3&1.
 
 Throught the programs, you'll be able to select which time-windows to use with the variable:
 
-    t-window
+    t_window
 
 This is a string array, stating the window-length and period for each time-window (e.g. such as '1&0.5').
 
