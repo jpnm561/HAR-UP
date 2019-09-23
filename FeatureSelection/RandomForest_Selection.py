@@ -10,6 +10,7 @@ import numpy as np
 import os
 from createFolder import createFolder
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 """
 --------------------------------------------------------------------------------------------------
@@ -57,20 +58,22 @@ def sel_RF(concept,t_window=['1&0.5', '2&1', '3&1.5'],scr_dir=''):
                 for i in range(1,len(d_base)):
                     ln = str(d_base[i])
                     q = cleanLine(ln)
-                    p = []
-                    for j in range(0,k+1):
-                        if(j < len(q)-1):
-                            if (q[j]!=' ')and(q[j]!=''):
-                                p.append(float(q[j]))
-                            else:
-                                if i != len(d_base)-1:
-                                    print('ERROR: ' + str(i+1))
-                    if(q[len(features)]!=' ')and(q[len(features)]!=''):
-                        y.append(float(q[len(features)]))
-                        x.append(p)
-                    else:
-                        if i != len(d_base)-1:
-                            print('ERROR: ' + str(i+1))
+                    #To avoid empty lines if they exist
+                    if len(q) > 1:
+                        p = []
+                        for j in range(0,k+1):
+                            if(j < len(q)-1):
+                                if (q[j]!=' ')and(q[j]!=''):
+                                    p.append(float(q[j]))
+                                else:
+                                    if i != len(d_base)-1:
+                                        print('ERROR: ' + str(i+1))
+                        if(q[len(features)]!=' ')and(q[len(features)]!=''):
+                            y.append(float(q[len(features)]))
+                            x.append(p)
+                        else:
+                            if i != len(d_base)-1:
+                                print('ERROR: ' + str(i+1))
                 #A numpy array is made with the inputs
                 X = np.array([np.array(z) for z in x])
                 #A random forest model is trained with the available data
@@ -191,12 +194,19 @@ def sel_Scores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
                     temp.append(pres[i][j])
                 ydata.append(temp)
             plt.plot(xdata, ydata[0], 'b',
-                     xdata, ydata[1],
+                     xdata, ydata[1], 'orange',
                      xdata, ydata[2], 'g',
                      xdata, ydata[3], 'r')
+            blu_patch = mpatches.Patch(color='b', label='Accuracy')
+            org_patch = mpatches.Patch(color='orange', label='Precision')
+            grn_patch = mpatches.Patch(color='g', label='Recall')
+            red_patch = mpatches.Patch(color='r', label='F1Score')
+            plt.legend(handles=[blu_patch,org_patch,grn_patch,red_patch])
+            plt.ylabel('Random Forest Score [%]')
+            plt.xlabel('Number of Features [-]')
             plt.title('Pre-Selection Report ' + cncpt + ' ' +twnd)
             plt.grid(True)
-            plt.show()
+            plt.savefig(cncpt + '//' + twnd + '//PreSelectionReport_' + twnd + '_' + cncpt + '.jpg',dpi=100)
             print('---' + twnd + ' done')
 
 """
