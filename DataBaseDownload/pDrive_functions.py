@@ -20,6 +20,6 @@ def fileFinder(f_name, p_id, drive):
 #A function that Downloads files from Google Drive
 #f_name : file name, f_id : file id, path : directory in which to save the file, drive : the drive object being used
 def fileDownloader(f_name, f_id, path, drive):
-    file_d = drive.CreateFile({'id': t_id})
+    file_d = drive.CreateFile({'id': f_id})
     file_d.GetContentFile(path + f_name)    
 #end of fileDownloader
