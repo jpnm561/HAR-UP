@@ -1,12 +1,46 @@
 # Camera OF files
 
 
-In this section you'll find the necessary files to work with our **optical flow** files from both cameras. Images were taken with a 640x480 pixel
+In this section you'll find the necessary files to work with our **optical flow** (OF) files from both cameras. Images were taken with a 640x480 pixel
 format. From these images, the optical flow was stored in csv files, stating changes in *u* and *v* axis. To work with these files, we
 joined them as lines, stating their timestamps. However, these file proved to be heavy, so a resize was made to work with them, changing 
 the image size to 20x20 pixels, taking only the magnitude of the *u* and *v* changes.
 
-## resizeOF.py
+## Unzipping the files
+
+Zipped files containing a Camera's OF files for a certain subject (#), activity ($), trial (%) and camera (?) contain the following files:
+
+```
+   Subject#Activity$Trial%Camera?_OF.zip/
+                                        /TIMESTAMP1_u.zip/
+                                                         /TIMESTAMP1_u.csv
+                                        /TIMESTAMP1_v.zip/
+                                                         /TIMESTAMP1_v.csv
+                                        /TIMESTAMP2_u.zip/
+                                                         /TIMESTAMP2_u.csv
+                                        /TIMESTAMP2_v.zip/
+                                                         /TIMESTAMP2_v.csv
+                                        ...
+                                        /TIMESTAMPn_u.zip/
+                                                         /TIMESTAMPn_u.csv
+                                        /TIMESTAMPn_v.zip/
+                                                         /TIMESTAMPn_v.csv
+
+```
+
+The program **Decompressor.py** was made to ease the unzipping process. It should be noted that unzipping these files can take a while (more than an hour per subject when unzipping both cameras).
+
+### Choosing direcotries
+
+When running the function **Decompressor()**, you need to state the path
+
+def Decompressor(o_dir,n_dir,
+              n_sub=[1,17],
+              n_act=[1,11],
+              n_trl=[1,3],
+              n_cam=[1,2]):
+
+## Resizeing the files
 
 ### Directory arrangement
 
