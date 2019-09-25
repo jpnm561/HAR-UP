@@ -43,8 +43,6 @@ Once this is done, you should be able to use the programs in this folder without
 
 - **createFolder**: A function that checks if a needed directory exists, if not, it makes it.
 
-- **Decompressor.py**: A file with functions to decompress zip files. Useful when wokring with Camera#.zip and Camera#_OF.zip
-
 
 ## Instructions
 
@@ -174,7 +172,7 @@ When using this program, you can select which feature elements to download. Thes
 
 - csv files containig the mean (a single feature) taken from the resized OF camera files in different time-windows. These can be found for 1 second windows taken every 0.5 seconds, 2 second windows taken every second, and 3 second windows taken every 1.5 seconds.
 
-- zip files containing optical flow files taken from both cameras. These files consist of more zip files with csv files that show changes in *u* and *v* for each time-stamp. You can download data from both cameras (side and front view).
+- zip files containing optical flow files taken from both cameras. These files consist of more zip files with csv files that show changes in *u* and *v* for each time-stamp. You can download data from both cameras (side and front view). More programs to work with these files can be found in the [CameraOF_files](https://github.com/jpnm561/HAR-UP/tree/master/CameraOF_files) folder.
 
 
 By default, all csv files are downloaded (zipped OF files are avoided on purpose). However, you can modify this when calling the **featureDownload** function.
@@ -285,4 +283,4 @@ By default, all csv files are downloaded (zipped OF files are avoided on purpose
                                             \Subject#Activity$Trial%Camera1_OF.zip
                                             \Subject#Activity$Trial%Camera2_OF.zip
                                 
-   - - You can choose which camera data to download by modifying the **n_cam** array variable. See the example section in the **Downloading the Data Set** section for more information.
+   - - You can choose which camera's data to download by modifying the **n_cam** array variable. See the example section in the **Downloading the Data Set** section for more information.
