@@ -88,7 +88,7 @@ def featureDownload(gral = '',
                 createFolder(path)
                 #Resized camera OF csv
                 if cameras:
-                    f_name = 'CameraFeatures'+sub+act+trl+'.csv'
+                    f_name = sub+act+trl+'CameraResizedOF.csv'
                     gauth, drive, v_flg = refresh_gauth(gauth,drive)
                     if v_flg:
                         break
