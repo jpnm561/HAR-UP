@@ -11,20 +11,20 @@ the image size to 20x20 pixels, taking only the magnitude of the *u* and *v* cha
 Zipped files containing a Camera's OF files for a certain subject (#), activity ($), trial (%) and camera (?) contain the following files:
 
 ```
-   Subject#Activity$Trial%Camera?_OF.zip/
-                                        /TIMESTAMP1_u.zip/
-                                                         /TIMESTAMP1_u.csv
-                                        /TIMESTAMP1_v.zip/
-                                                         /TIMESTAMP1_v.csv
-                                        /TIMESTAMP2_u.zip/
-                                                         /TIMESTAMP2_u.csv
-                                        /TIMESTAMP2_v.zip/
-                                                         /TIMESTAMP2_v.csv
+   Subject#Activity$Trial%Camera?_OF.zip\
+                                        \TIMESTAMP1_u.zip\
+                                                         \TIMESTAMP1_u.csv
+                                        \TIMESTAMP1_v.zip\
+                                                         \TIMESTAMP1_v.csv
+                                        \TIMESTAMP2_u.zip\
+                                                         \TIMESTAMP2_u.csv
+                                        \TIMESTAMP2_v.zip\
+                                                         \TIMESTAMP2_v.csv
                                         ...
-                                        /TIMESTAMPn_u.zip/
-                                                         /TIMESTAMPn_u.csv
-                                        /TIMESTAMPn_v.zip/
-                                                         /TIMESTAMPn_v.csv
+                                        \TIMESTAMPn_u.zip\
+                                                         \TIMESTAMPn_u.csv
+                                        \TIMESTAMPn_v.zip\
+                                                         \TIMESTAMPn_v.csv
 
 ```
 
@@ -32,13 +32,55 @@ The program **Decompressor.py** was made to ease the unzipping process. It shoul
 
 ### Choosing direcotries
 
-When running the function **Decompressor()**, you need to state the path
+When running the function **UnzipFolders()**, you need to state the path where the zipped files are stored and the path in which you want to store the unzipped files.
 
-def Decompressor(o_dir,n_dir,
-              n_sub=[1,17],
-              n_act=[1,11],
-              n_trl=[1,3],
-              n_cam=[1,2]):
+#### Example
+ 
+If you have your zipped files in the folder **ParentFolder\HAR_OF** and want to store the unzipped files in **ParentFolder\UnzippedOF** you'll be starting with:
+
+```
+   ParentFolder\
+               \HAR_OF\
+                      \Subject#\
+                               \Activity$\
+                                         \Trial%\
+                                                \Subject#Activity$Trial%Camera1_OF.zip
+                                                \Subject#Activity$Trial%Camera2_OF.zip
+
+```
+
+And you'd have to run the following code:
+
+    original_directory = 'ParentFolder//HAR_OF//'
+    new_directory = 'ParentFolder//UnzippedOF//'
+    UnzipFolders(original_directory,new_directory)
+
+The unzipped files will be arranged as:
+
+```
+   ParentFolder\
+               \UnzippedOF\
+                          \Subject#\
+                                   \Activity$\
+                                             \Trial%\
+                                                    \Subject#Activity$Trial%Camera1_OF\
+                                                                                      \TIMESTAMP1_u.csv
+                                                                                      \TIMESTAMP1_v.csv
+                                                                                      \TIMESTAMP2_u.csv
+                                                                                      \TIMESTAMP2_v.csv
+                                                                                      ...
+                                                                                      \TIMESTAMPn_u.csv
+                                                                                      \TIMESTAMPn_v.csv
+                                                    \Subject#Activity$Trial%Camera2_OF\
+                                                                                      \TIMESTAMP1_u.csv
+                                                                                      \TIMESTAMP1_v.csv
+                                                                                      \TIMESTAMP2_u.csv
+                                                                                      \TIMESTAMP2_v.csv
+                                                                                      ...
+                                                                                      \TIMESTAMPn_u.csv
+                                                                                      \TIMESTAMPn_v.csv
+
+```
 
 ## Resizeing the files
 
