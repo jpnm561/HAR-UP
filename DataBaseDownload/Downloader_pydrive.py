@@ -43,7 +43,7 @@ def refresh_gauth(gauth, drive):
         gauth.SaveCredentialsFile()
         drive = GoogleDrive(gauth)
     except Exception as e:
-        print('An error ocurred: ' + e)
+        print('An error ocurred: ' + str(e))
         flg = True
     return gauth, drive, flg
 
