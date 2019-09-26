@@ -10,13 +10,25 @@ All of the resulting validation data sets are stored, as well as scores (in csv 
 This program works by reading the selected features file. This is a csv file containign only the desired features for training (the Subject, Activity, Trial and Tag columns are missing in this file). These programs were made with the assumption that several experiments (the _concept_) will be performed, and therfore work with the following directory configuration:
 
 
+- Direcory before running the program:
+
+
+    Concept\
+           \TimeWindow\
+                      \SelectedFeatures_TimeWindow_Concept.csv
+
+- Directory after running the program:
+
+
     Concept\
            \AvgConfusionMatrix_Method_Concept.jpg
            \Score_Mean_Concept.jpg
            \Score_StandardDeviation_Concept.jpg
            \Score_Concept_temp.csv
-           \TimeWindow\SelectedFeatures_TimeWindow_Concept.csv
-                      \Method\Result_TimeWindow_Method_ResultNumber.csv
+           \TimeWindow\
+                      \SelectedFeatures_TimeWindow_Concept.csv
+                      \Method\
+                             \Result_TimeWindow_Method_ResultNumber.csv
                              \AvgConfusionMatrix_TimeWindow_Method_Concept.jpg
                              \Score_TimeWindow_Method_Concept.csv
     
@@ -49,6 +61,9 @@ Training is done for the selected time windows. By default these are:
 
 These time windows can be altered when calling **BC/MC_Training()** and **BC/MC_Scores()**
 
+## Classification type
+
+This program can work with either binary classifications or multiclass classifications. To work with binary classifications, you should use **BC_Training()** and **BC_Scores()**, and if you want to work with a multiclass classification **MC_Training()** and **MC_Scores()** should be selected.
 
 ## Example
 
