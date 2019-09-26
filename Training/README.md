@@ -12,14 +12,15 @@ This program works by reading the selected features file. This is a csv file con
 
 - Direcory before running the program:
 
-
+```
     Concept\
            \TimeWindow\
                       \SelectedFeatures_TimeWindow_Concept.csv
+```
 
 - Directory after running the program:
 
-
+```
     Concept\
            \AvgConfusionMatrix_Method_Concept.jpg
            \Score_Mean_Concept.jpg
@@ -30,8 +31,8 @@ This program works by reading the selected features file. This is a csv file con
                       \Method\
                              \Result_TimeWindow_Method_ResultNumber.csv
                              \AvgConfusionMatrix_TimeWindow_Method_Concept.jpg
-                             \Score_TimeWindow_Method_Concept.csv
-    
+                             \Score_TimeWindow_Method_Concept.csv 
+```
 
 ## Methods
 
