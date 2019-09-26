@@ -13,25 +13,28 @@ This program works by reading the selected features file. This is a csv file con
 - Direcory before running the program:
 
 ```
-    Concept\
-           \TimeWindow\
-                      \SelectedFeatures_TimeWindow_Concept.csv
+    CONCEPT\
+           \TIMEWINDOW\
+                      \SelectedFeatures_TIMEWINDOW_CONCEPT.csv
 ```
 
 - Directory after running the program:
 
 ```
-    Concept\
-           \AvgConfusionMatrix_Method_Concept.jpg
-           \Score_Mean_Concept.jpg
-           \Score_StandardDeviation_Concept.jpg
-           \Score_Concept_temp.csv
-           \TimeWindow\
-                      \SelectedFeatures_TimeWindow_Concept.csv
-                      \Method\
-                             \Result_TimeWindow_Method_ResultNumber.csv
-                             \AvgConfusionMatrix_TimeWindow_Method_Concept.jpg
-                             \Score_TimeWindow_Method_Concept.csv 
+    CONCEPT\
+           \AvgConfusionMatrix_METHOD_CONCEPT.jpg
+           \Score_Mean_CONCEPT.jpg
+           \Score_StandardDeviation_CONCEPT.jpg
+           \Score_CONCEPT_temp.csv
+           \TIMEWINDOW\
+                      \SelectedFeatures_TIMEWINDOW_CONCEPT.csv
+                      \METHOD\
+                             \Result_TIMEWINDOW_METHOD_1.csv
+                             \Result_TIMEWINDOW_METHOD_2.csv
+                             ...
+                             \Result_TIMEWINDOW_METHOD_10.csv
+                             \AvgConfusionMatrix_TIMEWINDOW_METHOD_CONCEPT.jpg
+                             \Score_TIMEWINDOW_METHOD_CONCEPT.csv 
 ```
 
 ## Methods
