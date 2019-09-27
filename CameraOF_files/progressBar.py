@@ -14,7 +14,7 @@ import sys
 def progressBar(name, value, endvalue, bar_length = 50, width = 1):
         percent = float(value) / endvalue
         progress = '|' * int(round(percent*bar_length))
-        remaining = '-' * (bar_length - len(arrow))
+        remaining = '-' * (bar_length - len(progress))
         sys.stdout.write("\r{0: <{1}}: [{2}]{3}%".format(\
                          name, width, progress + remaining, int(round(percent*100))))
         sys.stdout.flush()
