@@ -124,9 +124,9 @@ def main():
                 \ResizedOF\
                            \Subject#\
                                     \Activity$\
-                                              \CameraFeaturesSubject#Activity$Trial1.csv
-                                              \CameraFeaturesSubject#Activity$Trial2.csv
-                                              \CameraFeaturesSubject#Activity$Trial3.csv
+                                              \Subject#Activity$Trial1CameraResizedOF_notag.csv
+                                              \Subject#Activity$Trial2CameraResizedOF_notag.csv
+                                              \Subject#Activity$Trial3CameraResizedOF_notag.csv
 
 
 ### Choosing subjects, activities, trials and cameras
