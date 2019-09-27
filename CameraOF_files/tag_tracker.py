@@ -135,7 +135,7 @@ def fileJoiner(path,
                   n_act=[1,11],
                   n_trl=[1,3]):
     f_row = 1
-    f_name = 'CameraOF.csv'
+    f_name = 'CameraResizedOF.csv'
     f_flg = True
     p=0
     n_files=(n_sub[1]+1-n_sub[0])*(n_act[1]+1-n_act[0])*(n_trl[1]+1-n_trl[0])
