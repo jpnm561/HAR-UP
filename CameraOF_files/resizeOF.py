@@ -88,7 +88,7 @@ def camOF_joiner(gral,
                       p = 0
                       n_path = rs_path+sub+'//'+act+'//'
                       createFolder(n_path)
-                      n_file = 'CameraFeatures'+sub+act+trl+'.csv'
+                      n_file = sub+act+trl+'CameraResizedOF_notag.csv'
                       print('----------Writing...')
                       w = open(n_path+n_file,'w')
                       try:
