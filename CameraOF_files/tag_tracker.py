@@ -91,10 +91,10 @@ def tag_track(gral = '',
                       break
               if interrupt:
                   break
-              path = gral+sub+'//'+act+'//'+'CameraFeatures'+sub+act+trl+'.csv'
+              path = gral+sub+'//'+act+'//'+sub+act+trl+'CameraResizedOF_notag.csv'
               n_path = tag_path+sub+'//'+act+'//'
               createFolder(n_path)
-              n_file = sub+act+trl+'CameraOF'+'.csv'
+              n_file = sub+act+trl+'CameraResizedOF.csv'
               if os.path.exists(path):
                   trl_data = readDBase(path) 
                   w = open(n_path+n_file,'w')
@@ -149,7 +149,7 @@ def fileJoiner(path,
                     trl = 'Trial' + str(k)
                     f_path = path + sub + '\\' + act + '\\'
                     progressBar('--Joining files',p,n_files-1)
-                    r = open(f_path+sub+act+trl+'CameraOF.csv','r')
+                    r = open(f_path+sub+act+trl+'CameraResizedOF.csv','r')
                     txt = r.read()
                     r.close()
                     file = txt.split('\n')
