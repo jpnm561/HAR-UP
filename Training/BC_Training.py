@@ -54,7 +54,7 @@ def BC_Training(concept,
                     else:
                         falls.append(i)
                 else:
-                    if (i+1)==len(base):
+                    if (i+1)==len(d_base):
                         ignr = i
                     else:
                         #should an empty row that is not at the end exist
