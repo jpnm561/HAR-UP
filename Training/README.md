@@ -1,4 +1,4 @@
-# Trainig
+# Training
 
 Both _Training_ files train, validate and get scores (accuracy, precision, recall and f1-score) for said validation. To train, 70% of the available data is randomly selected (for binary classifications 70% of fall data and 70% of other data are selected), leaving the remaining 30% for validation.
 
