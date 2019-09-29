@@ -32,7 +32,7 @@ The program **Decompressor.py** was made to ease the unzipping process. It shoul
 
 ### Choosing direcotries
 
-When running the function **UnzipFolders()**, you need to state the path where the zipped files are stored and the path in which you want to store the unzipped files.
+When running the function **Decompressor()**, you need to state the path where the zipped files are stored and the path in which you want to store the unzipped files.
 
 #### Example
  
@@ -53,7 +53,7 @@ And you'd have to run the following code:
 
     original_directory = 'ParentFolder//HAR_OF//'
     new_directory = 'ParentFolder//UnzippedOF//'
-    UnzipFolders(original_directory,new_directory)
+    Decompressor(original_directory,new_directory)
 
 The unzipped files will be arranged as:
 
@@ -63,22 +63,22 @@ The unzipped files will be arranged as:
                           \Subject#\
                                    \Activity$\
                                              \Trial%\
-                                                    \Subject#Activity$Trial%Camera1_OF\
-                                                                                      \TIMESTAMP1_u.csv
-                                                                                      \TIMESTAMP1_v.csv
-                                                                                      \TIMESTAMP2_u.csv
-                                                                                      \TIMESTAMP2_v.csv
-                                                                                      ...
-                                                                                      \TIMESTAMPn_u.csv
-                                                                                      \TIMESTAMPn_v.csv
-                                                    \Subject#Activity$Trial%Camera2_OF\
-                                                                                      \TIMESTAMP1_u.csv
-                                                                                      \TIMESTAMP1_v.csv
-                                                                                      \TIMESTAMP2_u.csv
-                                                                                      \TIMESTAMP2_v.csv
-                                                                                      ...
-                                                                                      \TIMESTAMPn_u.csv
-                                                                                      \TIMESTAMPn_v.csv
+                                                    \Subject#Activity$Trial%Camera1_OF_UZ\
+                                                                                         \TIMESTAMP1_u.csv
+                                                                                         \TIMESTAMP1_v.csv
+                                                                                         \TIMESTAMP2_u.csv
+                                                                                         \TIMESTAMP2_v.csv
+                                                                                         ...
+                                                                                         \TIMESTAMPn_u.csv
+                                                                                         \TIMESTAMPn_v.csv
+                                                    \Subject#Activity$Trial%Camera2_OF_UZ\
+                                                                                         \TIMESTAMP1_u.csv
+                                                                                         \TIMESTAMP1_v.csv
+                                                                                         \TIMESTAMP2_u.csv
+                                                                                         \TIMESTAMP2_v.csv
+                                                                                         ...
+                                                                                         \TIMESTAMPn_u.csv
+                                                                                         \TIMESTAMPn_v.csv
 
 ```
 
