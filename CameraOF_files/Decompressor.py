@@ -10,45 +10,29 @@ import shutil
 from createFolder import createFolder
 from progressBar import progressBar
 
-#A function that unzips folders in a direcory
-def UnzipFolders(o_dir,n_dir,
-              n_sub=[1,17],
-              n_act=[1,11],
-              n_trl=[1,3],
-              n_cam=[1,2]):
-    #Subjects
-    for i in range(n_sub[0],n_sub[1]+1):
-        sub = 'Subject' + str(i)
-        print('--%s' % (sub))
-        #Activities
-        for j in range(n_act[0],n_act[1]+1):
-            act = 'Activity' + str(j)
-            print('--S%s--%s' % (str(i),act))
-            #Trials        
-            for k in range(n_trl[0],n_trl[1]+1):
-                trl = 'Trial' + str(k)
-                print('--S%s--A%s--%s' % (str(i),str(j),trl))
-                gral = sub+'//'+act+'//'+trl+'//'
-                #Cameras
-                for l in range(n_cam[0],n_cam[1]+1):
-                    directory = o_dir + gral
-                    path = n_dir + gral +sub+act+trl+ 'Camera' + str(l) + '_OF_temp'
-                    createFolder(path)
-                    try:
-                        p = 0
-                        progressBar('------Camera'+str(l),p,len(os.listdir(directory)))
-                        for filen in os.listdir(directory):
-                            zipf = zf.ZipFile(directory + '//' + filen)
-                            zipf.extractall(path)
-                            zipf.close()
-                            p+=1
-                            progressBar('------Camera'+str(l),p,len(os.listdir(directory)))
-                    except:
-                        print('--------The following direcory was not found: ' + directory)
-                #print('--Unzipped:' + sub + act + trl)
+"""
+----------------------------------------------------------------------------------------
+Functions
+----------------------------------------------------------------------------------------
+"""
 
-#A function that deleats temporal files creaeted during the process
-def DeleateFolder(n_dir,
+#A function that unzips folders froma a directory, into a given path
+def UnzipFolders(directory, path, task):
+    createFolder(path)
+    try:
+        p = 0
+        progressBar(task,p,len(os.listdir(directory)))
+        for filen in os.listdir(directory):
+            zipf = zf.ZipFile(directory + '//' + filen)
+            zipf.extractall(path)
+            zipf.close()
+            p+=1
+            progressBar(task,p,len(os.listdir(directory)))
+    except:
+        print('--------The following direcory was not found: ' + directory)
+
+#A function that removes temporal files creaeted during the process
+def DeleteFolder(n_dir,
               n_sub=[1,17],
               n_act=[1,11],
               n_trl=[1,3],
@@ -73,7 +57,7 @@ def DeleateFolder(n_dir,
                     try:
                         shutil.rmtree(path)
                     except:
-                        print('An error ocurred when deleating: ' + path)
+                        print('An error ocurred while deleting: ' + path)
                     p+=1
                     progressBar('--Progress',p,q)
 
@@ -83,10 +67,6 @@ def Decompressor(o_dir,n_dir,
               n_act=[1,11],
               n_trl=[1,3],
               n_cam=[1,2]):
-    #Unzipping the outer folders
-    print('Unzipping outer folders: ')
-    UnzipFolders(o_dir, n_dir, n_sub, n_act, n_trl, n_cam)
-    print('Unzipping optical flow files: ')
     #Subjects
     for i in range(n_sub[0],n_sub[1]+1):
         sub = 'Subject' + str(i)
@@ -99,25 +79,25 @@ def Decompressor(o_dir,n_dir,
             for k in range(n_trl[0],n_trl[1]+1):
                 trl = 'Trial' + str(k)
                 print('--S%s--A%s--%s' % (str(i),str(j),trl))
-                gral = sub+'//'+act+'//'+trl+'//'+sub+act+trl
+                gral = sub+'//'+act+'//'+trl+'//'
                 #Cameras
                 for l in range(n_cam[0],n_cam[1]+1):
-                    directory = n_dir + gral + 'Camera' + str(l) + '_OF_temp'
-                    path = n_dir + gral + 'Camera' + str(l) + '_OF_UZ'
-                    createFolder(path)
-                    try:
-                        p = 0
-                        progressBar('------Camera'+str(l),p,len(os.listdir(directory)))
-                        for filen in os.listdir(directory):
-                            zipf = zf.ZipFile(directory + '//' + filen)
-                            zipf.extractall(path)
-                            zipf.close()
-                            p+=1
-                            progressBar('------Camera'+str(l),p,len(os.listdir(directory)))
-                    except:
-                        print('The following direcory was not found: ' + directory)
-                #print('-----Unzipped:' + sub + act + trl)
-    DeleateFolder(n_dir, n_sub, n_act, n_trl, n_cam)
+                    directory = o_dir + gral
+                    path = n_dir + gral +sub+act+trl+ 'Camera' + str(l) + '_OF_temp'
+                    print('----Unzipping outer folders:')
+                    UnzipFolders(directory, path, '------Camera'+str(l))
+                    
+                    directory = n_dir + gral + sub+act+trl + 'Camera' + str(l) + '_OF_temp'
+                    path = n_dir + gral + sub+act+trl + 'Camera' + str(l) + '_OF_UZ'
+                    print('Unzipping optical flow files:')
+                    UnzipFolders(directory, path, '------Camera'+str(l))
+    DeleteFolder(n_dir, n_sub, n_act, n_trl, n_cam)
+
+"""
+----------------------------------------------------------------------------------------
+End of functions
+----------------------------------------------------------------------------------------
+"""
 
 def main():
     original_directory = ''
