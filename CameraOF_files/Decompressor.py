@@ -84,12 +84,12 @@ def Decompressor(o_dir,n_dir,
                 for l in range(n_cam[0],n_cam[1]+1):
                     directory = o_dir + gral
                     path = n_dir + gral +sub+act+trl+ 'Camera' + str(l) + '_OF_temp'
-                    print('----Unzipping outer folders:')
+                    print('----Unzipping outer folders')
                     UnzipFolders(directory, path, '------Camera'+str(l))
                     
                     directory = n_dir + gral + sub+act+trl + 'Camera' + str(l) + '_OF_temp'
                     path = n_dir + gral + sub+act+trl + 'Camera' + str(l) + '_OF_UZ'
-                    print('Unzipping optical flow files:')
+                    print('----Unzipping optical flow files')
                     UnzipFolders(directory, path, '------Camera'+str(l))
     DeleteFolder(n_dir, n_sub, n_act, n_trl, n_cam)
 
