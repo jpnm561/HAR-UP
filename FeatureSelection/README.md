@@ -4,6 +4,8 @@ Here, you'll find a description of the feature selection process carried out by 
 
 ## Pre-selection process
 
+### What we used to do (Weka)
+
 To begin selecting features, [Weka](https://www.cs.waikato.ac.nz/~ml/weka/index.html) was used, for attribute selection using Explorer mode and 10 folds for the selection, with the following models:
 
 					-CfsSubsetEval_BestFirst (with ZeroR set as the classifier)
@@ -14,6 +16,15 @@ To begin selecting features, [Weka](https://www.cs.waikato.ac.nz/~ml/weka/index.
 					
 					-ClassifierAttributeEval_Ranker (with DecisionTable set as the classifier)
      
+### Python alternative (FeaturePreSelection.py)
+
+Since the use of Weka could be time consuming, it was decided to make our feature selection with Python, so it could be joined easily with our other work. Because of this **FeaturePreSelection.py** was made. Currently, this program uses the following methods:
+
+- Extra Trees Classifier (with 250 estimators and no random state).
+
+- Linear SVC model with L2 as penalty.
+
+
 
 ## RandomForest_Selection.py
 
