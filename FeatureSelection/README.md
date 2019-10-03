@@ -8,13 +8,13 @@ Here, you'll find a description of the feature selection process carried out by 
 
 To begin selecting features, [Weka](https://www.cs.waikato.ac.nz/~ml/weka/index.html) was used, for attribute selection using Explorer mode and 10 folds for the selection, with the following models:
 
-					-CfsSubsetEval_BestFirst (with ZeroR set as the classifier)
+- CfsSubsetEval_BestFirst (with ZeroR set as the classifier)
 					
-					-SubSetEval_Greedysepwise (with ZeroR set as the classifier)
+- SubSetEval_Greedysepwise (with ZeroR set as the classifier)
 					
-					-CorrelationAttributeEval_Ranker (with ZeroR set as the classifier)
+- CorrelationAttributeEval_Ranker (with ZeroR set as the classifier)
 					
-					-ClassifierAttributeEval_Ranker (with DecisionTable set as the classifier)
+- ClassifierAttributeEval_Ranker (with DecisionTable set as the classifier)
      
 ### Python alternative (FeaturePreSelection.py)
 
