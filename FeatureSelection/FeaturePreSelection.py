@@ -22,6 +22,10 @@ Functions
 
 #ExtraTree decision forest for Feature Selection
 def treeClss(X,y):
+    q = 99
+    if X.shape[1] < 100:
+        q = X.shape[1]
+    progressBar('----Extra trees',0,q)
     forest = ExtraTreesClassifier(n_estimators=250,
                                   random_state=0)
     forest.fit(X, y)
@@ -31,15 +35,21 @@ def treeClss(X,y):
     for f in range(X.shape[1]):
         if f < 100:
             selection.append(indices[f])
+            progressBar('----Extra trees',f,q)
         else:
             break
     return selection
 
 #L2 classification with linear SVC for Feature Selection
 def l2SM(X,y):
+    q = 100
+    progressBar('----Linear SVC ',0,q)
     lsvc = LinearSVC(C=1.00, penalty="l2", dual=False).fit(X, y)
     model = SelectFromModel(lsvc, prefit=True)
     X_new = model.transform(X)
+    if X_new.shape[1] < 100:
+        q = X_new.shape[1]
+    p = 0
     selection = []
     for f in range(X_new.shape[1]):
         for i in range(X.shape[1]):
@@ -50,6 +60,8 @@ def l2SM(X,y):
                     break
             if flg and (len(selection)<=100):
                 selection.append(i)
+                p += 1
+                progressBar('----Linear SVC ',p,q)
     return selection
 
 
@@ -65,20 +77,25 @@ def join(f_arr,s_arr):
             f_arr.append(s_arr[i])
     return f_arr
 
+
 def quantity(s_arr, f, i):
     for n in s_arr:
         if n == f:
             i+=1
             break
     return i
-    
+
+#function to wite a file stating which features were selected with their frequecy
 def freq(path,arr_1,arr_2,features):
     i_flg = False
     arr = []
     f_arr = join([], arr_1)
     f_arr = join(f_arr, arr_2)
     w =  open(path, 'w')
+    p = 0
+    q = len(f_arr)
     try:
+        progressBar('----Frequencies',p,q)
         w.write('Attribute No,Attribute,Frequency')
         for f in f_arr:
             i = 0
@@ -86,6 +103,8 @@ def freq(path,arr_1,arr_2,features):
             i = quantity(arr_2, f, i)
             w.write('\n' + str(f+1) + ',' + features[f] + ',' + str(i))
             arr.append([f,i])
+            p += 1
+            progressBar('----Frequencies',p,q)
     except KeyboardInterrupt:
         print('The program has been aborted by the user')
         i_flg = True
@@ -108,6 +127,7 @@ def freq(path,arr_1,arr_2,features):
         return s_arr    
     return i_flg    
 
+#function to write a new file with the selected features
 def writeDocument(cncpt,
                   features,
                   X,
@@ -123,7 +143,7 @@ def writeDocument(cncpt,
         for i in range(0, len(s_arr)):
             w.write(str(features[s_arr[i]]) + ',')
             p += 1
-            progressBar('----Writing file',p,q)
+            progressBar('----Output file',p,q)
         w.write('Tag\n')
         for i in range(0, X.shape[0]):
             for j in range(0, len(s_arr)):
@@ -132,7 +152,7 @@ def writeDocument(cncpt,
             if i < X.shape[0]-1:
                 w.write('\n')
             p += 1
-            progressBar('----Writing file',p,q)
+            progressBar('----Output file',p,q)
     except KeyboardInterrupt:
         print('The program has been interrupted by the user.')
     except Exception as e:
@@ -168,7 +188,7 @@ def preSelection(concept,
                 arr1 = treeClss(X,y)
                 arr2 = l2SM(X,y)
                 
-                arr = freq('PreSelection.csv',arr1,arr2,features)
+                arr = freq(cncpt+'//'+twnd+'//PreSelection.csv',arr1,arr2,features)
                 if type(arr) != bool:
                     writeDocument(cncpt,features,X,y,arr,twnd)
     
