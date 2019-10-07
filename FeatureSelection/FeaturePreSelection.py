@@ -2,7 +2,7 @@
 """
 Created on Thu Sep 26 19:43:36 2019
 
-@author: 0169723
+@author: JosePablo
 """
 
 import numpy as np
@@ -11,7 +11,7 @@ from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_selection import SelectFromModel
 from sklearn.svm import LinearSVC
 import pandas as pd
-from PreSelector import preSelector
+from createFolder import createFolder
 
 """
 -------------------------------------------------------------------------------
@@ -108,6 +108,70 @@ def freq(path,arr_1,arr_2,features):
         return s_arr    
     return i_flg    
 
+def writeDocument(cncpt,
+                  features,
+                  X,
+                  y,
+                  s_arr,
+                  twnd):
+    path = cncpt+'//'+twnd+'//'
+    createFolder(path)
+    p = 0
+    q = len(s_arr) + X.shape[0]
+    w = open(path + 'PreSelectedFTS_'+twnd+'_'+cncpt+'.csv', 'w')
+    try:
+        for i in range(0, len(s_arr)):
+            w.write(str(features[s_arr[i]]) + ',')
+            p += 1
+            progressBar('----Writing file',p,q)
+        w.write('Tag\n')
+        for i in range(0, X.shape[0]):
+            for j in range(0, len(s_arr)):
+                w.write(str(X[i][s_arr[j]]) + ',')
+            w.write(str(y[i]))
+            if i < X.shape[0]-1:
+                w.write('\n')
+            p += 1
+            progressBar('----Writing file',p,q)
+    except KeyboardInterrupt:
+        print('The program has been interrupted by the user.')
+    except Exception as e:
+        print('Unexpected error: ' + str(e))
+    w.close()
+
+def preSelection(concept,
+                 t_window=['1&0.5','2&1','3&1.5'],
+                 path = ''):
+    for cncpt in concept:
+        print(cncpt)
+        for twnd in t_window:
+            print('--%s' %(twnd))
+            df = pd.read_csv(path + cncpt + '//' + twnd + '//' + cncpt + '_' + twnd + '.csv')
+            df.head()
+            df.columns[-1]
+            X = df[df.columns[0:-1]].values
+            error = False
+            try:
+                y = df[' Tag'].values
+            except Exception as e:
+                if str(e) == 'Tag':
+                    y = df[' Tag'].values  #'Tag'
+                else:
+                    error = True
+                    print('Unexpected error: ' + str(e))
+            if not error:
+                print('----Data sorted')
+                features = []
+                for i in range(0,len(df.columns)-1):
+                    features.append(df.columns[i])
+            
+                arr1 = treeClss(X,y)
+                arr2 = l2SM(X,y)
+                
+                arr = freq('PreSelection.csv',arr1,arr2,features)
+                if type(arr) != bool:
+                    writeDocument(cncpt,features,X,y,arr,twnd)
+    
 """
 -------------------------------------------------------------------------------
 End of functions
@@ -115,24 +179,9 @@ End of functions
 """
 
 def main():
-    db_path = 'IMU_Head_IR_1&0.5.csv'
-    df = pd.read_csv(db_path)
-    df.head()
-    df.columns[-1]
-    X = df[df.columns[0:-1]].values
-    y = df[' Tag'].values  #'Tag'
-    print('Data sorted')  
-    features = []
-    for i in range(0,len(df.columns)-1):
-        features.append(df.columns[i])
-    print('Features reached')    
-    
-    a = treeClss(X,y)
-    b = l2SM(X,y)
-    
-    arr = freq('PreSelection.csv',a,b,features)
-    if type(arr) != bool:
-        print(arr)
+    concept = []
+    preSelection(concept)
+    print('End of task')
     
 if __name__=="__main__":
     main()
