@@ -2,16 +2,17 @@
 """
 Created on Thu Sep 26 19:43:36 2019
 
-@author: JosePablo
+@author: 0169723
 """
 
 import numpy as np
-from progressBar import progressBar
 from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.feature_selection import SelectFromModel
+from sklearn.feature_selection import SelectFromModel, RFE
+from sklearn.ensemble import RandomForestClassifier as RndFC
 from sklearn.svm import LinearSVC
 import pandas as pd
 from createFolder import createFolder
+from progressBar import progressBar
 
 """
 -------------------------------------------------------------------------------
@@ -64,7 +65,20 @@ def l2SM(X,y):
                 progressBar('----Linear SVC ',p,q)
     return selection
 
-
+#Recursive Feature elimination with Random Forest
+def rfRFE(X,y):
+    q = 100
+    if X.shape[1] < 100:
+        q = int(X.shape[1]*0.3)
+    progressBar('----RFE with RF',0,int(q*1.3))
+    estimator = RndFC(n_estimators = 10)
+    selector = RFE(estimator, q, step=1)
+    progressBar('----RFE with RF',int(q*0.2),int(q*1.3))
+    selector = selector.fit(X, y)
+    progressBar('----RFE with RF',q,int(q*1.3))
+    selection = selector.get_support(1)
+    progressBar('----RFE with RF',int(q*1.3),int(q*1.3))
+    return selection
 
 def join(f_arr,s_arr):
     for i in range(0,len(s_arr)):
@@ -77,20 +91,19 @@ def join(f_arr,s_arr):
             f_arr.append(s_arr[i])
     return f_arr
 
-
 def quantity(s_arr, f, i):
     for n in s_arr:
         if n == f:
             i+=1
             break
     return i
-
-#function to wite a file stating which features were selected with their frequecy
-def freq(path,arr_1,arr_2,features):
+    
+def freq(path,arr_1,arr_2,arr_3,features):
     i_flg = False
     arr = []
     f_arr = join([], arr_1)
     f_arr = join(f_arr, arr_2)
+    f_arr = join(f_arr, arr_3)
     w =  open(path, 'w')
     p = 0
     q = len(f_arr)
@@ -101,6 +114,7 @@ def freq(path,arr_1,arr_2,features):
             i = 0
             i = quantity(arr_1, f, i)
             i = quantity(arr_2, f, i)
+            i = quantity(arr_3, f, i)
             w.write('\n' + str(f+1) + ',' + features[f] + ',' + str(i))
             arr.append([f,i])
             p += 1
@@ -127,7 +141,6 @@ def freq(path,arr_1,arr_2,features):
         return s_arr    
     return i_flg    
 
-#function to write a new file with the selected features
 def writeDocument(cncpt,
                   features,
                   X,
@@ -186,12 +199,14 @@ def preSelection(concept,
                     features.append(df.columns[i])
             
                 arr1 = treeClss(X,y)
-                arr2 = l2SM(X,y)
+                arr2 = rfRFE(X,y)
+                arr3 = l2SM(X,y)
                 
-                arr = freq(cncpt+'//'+twnd+'//PreSelection.csv',arr1,arr2,features)
+                arr = freq(cncpt+'//'+twnd+'//PreSelection.csv',arr1,arr2,arr3,features)
                 if type(arr) != bool:
                     writeDocument(cncpt,features,X,y,arr,twnd)
-    
+
+                    
 """
 -------------------------------------------------------------------------------
 End of functions
