@@ -24,6 +24,7 @@ Since the use of Weka could be time consuming, it was decided to make our featur
 
 - Linear SVC model with L2 as penalty.
 
+- Recursive Feature Elimination with Random Forest as the classifier.
 
 
 ## RandomForest_Selection.py
