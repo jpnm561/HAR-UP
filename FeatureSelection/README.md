@@ -53,6 +53,24 @@ After running the program, these will be the new files in the directory:
 	              \PreSelectedFTS_TIMEWINDOW_CONCEPT.csv
 ```
 
+#### Concpet
+
+A **concept** (or concepts) must be specified to begin running this program. To do so, just enter in the **concept** parameter in **preSelection()** which experiments you want to use for pre-selection. 
+
+
+#### Time windows
+
+Pre-selection is done by default for these time windows:
+
+- 1&0.5
+
+- 2&1
+
+- 3&1.5
+
+However, they can be altered when calling **preSelection()**, by modifying the **t_window** parameter. See the example below (under *Selection* or the repository's [README](https://github.com/jpnm561/HAR-UP/blob/master/README.md) for more information on this subject.
+
+
 ## RandomForest_Selection.py
 
 
@@ -86,7 +104,7 @@ Selection is done for the selected time windows. By default these are:
 
 - 3&1.5
 
-These time windows can be altered when calling **sel_RF()** and **sel_Scores()**
+These time windows can be altered when calling **sel_RF()** and **sel_Scores()**, by modifying the **t_window** parameter. See the example below or the repository's [README](https://github.com/jpnm561/HAR-UP/blob/master/README.md) for more information on this subject.
 
 ### Classification type
 
