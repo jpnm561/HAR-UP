@@ -26,6 +26,7 @@ Since the use of Weka could be time consuming, it was decided to make our featur
 
 - Recursive Feature Elimination with Random Forest as the classifier.
 
+This program ranks features with these methods, then an array (containing 100 features, or 20% of all features if there are less than a hundred) is returned. These arrays are then compared and a report with the selected features is made, showing all of the selected features and the frequency that they appeared. If the frequency of a given feature is equal or bigger than 2, this feature is then considered important and chosen for the pre-selected features.
 
 ## RandomForest_Selection.py
 
