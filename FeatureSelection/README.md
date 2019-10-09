@@ -36,7 +36,7 @@ This program takes the pre-selected features csv file and trains a random forest
 
 This program works by reading the pre-selected features file. This csv file only contains features and their respective tag (the Subject, Activity and Trial columns are missing in this file). These programs were made with the assumption that several experiments (the _concept_) will be performed, and therfore works with the following directory configuration:
 
-
+```
     CONCEPT\
            \TIMEWINDOW\
 	              \PreSelectedFTS_TIMEWINDOW_CONCEPT.csv
@@ -46,8 +46,8 @@ This program works by reading the pre-selected features file. This csv file only
 		                        \Output1.csv
 				        \Output2.csv
 				        ...
-					\OutputN.csv
-    
+					\OutputN.csv 
+```
 
 
 ### Time windows
@@ -68,25 +68,28 @@ By default, scores are calculated assuming the use of a binary classification. T
 
 So calling:
 
+```
     sel_Scores(concept,binary=False)
-    
+```   
+   
  would get the scores for a multiclass classification.
 
 ## Example
 
 The following example shows how to call the function for two windows: 1 second window, taken every 0.5 seconds; and 2 second window taken every second. This example uses a non-binary classification data set and two experiments: selected IMU features ('IMU') and selected Right-Pocket IMU features ('IMU-RightPocket').
 
+```
     def main():
         concept = ['IMU','IMU-RightPocket']
         sel_RF(concept, t_window=['1&0.5','2&1'])
         sel_Scores(concept, t_window=['1&0.5','2&1'], binary=False)
     if __name__ == "__main__":
         main()
-
+```
 
 It is important to note that to run this successfully you'll need the following files:
 
-
+```
     ParentFolder\
                 \createFolder.py
                 \RandomForest_Selection.py
@@ -100,11 +103,11 @@ It is important to note that to run this successfully you'll need the following 
                                       \PreSelectedFTS_1&0.5_IMU-RightPocket.csv
                                 \2&1\
                                     \PreSelectedFTS_2&1_IMU-RightPocket.csv
-
+```
 
 After running the program, the new files in the directory will be:
 
-
+```
     ParentFolder\
                 \IMU\
                     \1&0.5\
@@ -135,8 +138,9 @@ After running the program, the new files in the directory will be:
                                 \2&1\
                                     \PreSelectionReport_2&1_IMU-RightPocket.csv
 		                    \PreSelectionReport_2&1_IMU-RightPocket.png
-	                            \PreSel_RF_outputs\
+                                    \PreSel_RF_outputs\
 		                                      \Output1.csv
 				                      \Output2.csv
 				                      ...
 				       	              \OutputN.csv
+```
