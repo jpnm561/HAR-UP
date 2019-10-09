@@ -26,7 +26,32 @@ Since the use of Weka could be time consuming, it was decided to make our featur
 
 - Recursive Feature Elimination with Random Forest as the classifier.
 
-This program ranks features with these methods, then an array (containing 100 features, or 20% of all features if there are less than a hundred) is returned. These arrays are then compared and a report with the selected features is made, showing all of the selected features and the frequency that they appeared. If the frequency of a given feature is equal or bigger than 2, this feature is then considered important and chosen for the pre-selected features.
+This program ranks features with these methods, then an array (containing 100 features, or 30% of all features if there are less than a hundred) is returned. These arrays are then compared and a report with the selected features is made, showing all of the selected features and the frequency that they appeared. If the frequency of a given feature is equal or bigger than 2, this feature is then considered important and chosen for the pre-selected features, outputting a new csv file with this selection.
+
+To use this program, you'll simply have to run the function **preSelection()**, stating the *concepts* that are being used.
+
+#### Directory arrangement
+
+The following directory arrangement is necessary to run properly this program:
+
+```
+    FeaturePreSelection.py
+    createFolder.py
+    progressBar.py
+    CONCEPT\
+           \TIMEWINDOW\
+	              \CONCPET_TIMEWINDOW.csv
+```
+
+After running the program, these will be the new files in the directory:
+
+
+```
+    CONCEPT\
+           \TIMEWINDOW\
+		      \PreSelection.csv
+	              \PreSelectedFTS_TIMEWINDOW_CONCEPT.csv
+```
 
 ## RandomForest_Selection.py
 
