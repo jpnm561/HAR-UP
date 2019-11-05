@@ -53,7 +53,7 @@ After running the program, these will be the new files in the directory:
 	              \PreSelectedFTS_TIMEWINDOW_CONCEPT.csv
 ```
 
-#### Concpet
+#### Concept
 
 A **concept** (or concepts) must be specified to begin running this program. To do so, just enter in the **concept** parameter in **preSelection()** which experiments you want to use for pre-selection. 
 
