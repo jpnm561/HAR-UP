@@ -207,6 +207,7 @@ def sel_Scores(concept,t_window=['1&0.5', '2&1', '3&1.5'],
             plt.title('Pre-Selection Report ' + cncpt + ' ' +twnd)
             plt.grid(True)
             plt.savefig(cncpt + '//' + twnd + '//PreSelectionReport_' + twnd + '_' + cncpt + '.jpg',dpi=100)
+            plt.clf()
             print('---' + twnd + ' done')
 
 """
