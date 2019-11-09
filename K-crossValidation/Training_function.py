@@ -69,7 +69,8 @@ def training(concept,
                 print('------%s Avg. Accuracy: %f' %(methods[i],avg_accuracy))
 
 def main():
-    training(['IMU-Belt_Vision-C1'], t_window = ['3&1.5'], methods=['RF','MLP','KNN'])
+    concept = []
+    training(concept)
     print('\nEnd of task')
 
     
