@@ -8,7 +8,7 @@ We have programs to help downloading our database and for feature selection, tra
 
 ## Relevant links
 
-The following hyperlinks will redirect you to our work, where you'll find our research's website and published articles.
+The following hyperlinks will redirect you to our research's website and published articles.
 
 - [UP's Human Activity Recognition website](https://sites.google.com/up.edu.mx/har-up/p%C3%A1gina-principal)
 - [Sensors article: *UP-Fall Detection Dataset: A Multimodal Approach*](https://www.mdpi.com/1424-8220/19/9/1988)
