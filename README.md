@@ -18,6 +18,24 @@ The following hyperlinks will redirect you to our research's website and publish
 
 To properly use the programs in this repositories you'll need to have a **Python 3.7** distribution. We recomend using [Anaconda](https://www.anaconda.com/distribution/).
 
+These are the libraries that are used by our program (most of them come with Anaconda):
+
+- datetime
+- itertools
+- matplotlib
+- numpy
+- os
+- pandas
+- PIL
+- [PyDrive](https://pythonhosted.org/PyDrive/) (not included with base Anaconda)
+- pytest
+- random
+- scipy
+- shutil
+- sklearn
+- statistics
+- sys
+- zipfile
 
 ## Important concepts
 
