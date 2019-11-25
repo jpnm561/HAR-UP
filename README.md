@@ -6,6 +6,18 @@ In this repository you'll be able to find the python programs used for the Unive
  
 We have programs to help downloading our database and for feature selection, training and validation.
 
+## Relevant links
+
+The following hyperlinks will redirect you to our work, where you'll find our research's website and published articles.
+
+- [UP's Human Activity Recognition website](https://sites.google.com/up.edu.mx/har-up/p%C3%A1gina-principal)
+- [Sensors article: *UP-Fall Detection Dataset: A Multimodal Approach*](https://www.mdpi.com/1424-8220/19/9/1988)
+- [IEEE article: *Challenges in Data Acquisition Systems: Lessons Learned from Fall Detection to Nanosensors*](https://ieeexplore.ieee.org/document/8688609)
+
+## System Requirements
+
+To properly use the programs in this repositories you'll need to have a **Python 3.7** distribution. We recomend using [Anaconda](https://www.anaconda.com/distribution/).
+
 
 ## Important concepts
 
