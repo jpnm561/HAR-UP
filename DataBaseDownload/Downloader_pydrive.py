@@ -84,7 +84,7 @@ def featureDownload(gral = '',
             for k in range(n_trl[0],n_trl[1] + 1):
                 trl = 'Trial' + str(k)
                 print('S'+str(i)+'-A'+str(j)+'--'+trl)
-                path = gral + '//' + sub + '//' + act + '//' + trl + '//'
+                path = gral + sub + '//' + act + '//' + trl + '//'
                 createFolder(path)
                 #Resized camera OF csv
                 if cameras:
@@ -164,7 +164,7 @@ def dataBaseDownload(gral = '',
                     break
                 trl = 'Trial' + str(k)
                 print('S'+str(i)+'-A'+str(j)+'--'+trl)
-                path = gral + '//' + sub + '//' + act + '//' + trl + '//'
+                path = gral + sub + '//' + act + '//' + trl + '//'
                 createFolder(path)
                 f_name = sub+act+trl + '.csv'
                 gauth, drive, v_flg = refresh_gauth(gauth,drive)
