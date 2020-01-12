@@ -63,7 +63,7 @@ def download(path,f_name,p_id,gauth,drive):
 
 #A function to handle feature downloads
 def featureDownload(gral = '',
-                     n_sub=[1,11],
+                     n_sub=[1,17],
                      n_act=[1,11],
                      n_trl=[1,3],
                      t_window=['1&0.5','2&1','3&1.5'],
@@ -131,7 +131,7 @@ def featureDownload(gral = '',
         print('An error ocurred while connecting to Google Drive')
 
 def dataBaseDownload(gral = '',
-                     n_sub=[1,11],
+                     n_sub=[1,17],
                      n_act=[1,11],
                      n_trl=[1,3],
                      csv_files=True,
