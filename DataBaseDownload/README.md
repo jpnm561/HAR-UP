@@ -13,7 +13,7 @@ terminal:
 
 2. After installing pyDrive, you'll need to enable Google Drive's API in your goodgle account, make a project and get your client id and client secret (these can be downloaded in a json file as 'client_secrets.json'). Instructions on how to achieve this can be followed here: https://pythonhosted.org/PyDrive/quickstart.html
 
-3. To avoid errors, and constant authorization checks via browser, you should then make a YAML file called **'settings.yaml'** in your root directory, where the **'client_secrets.json'** should alse be stored. This YAML file should have the following content:
+3. To avoid errors, and constant authorization checks via browser, you should then make a YAML file called **'settings.yaml'** in your working directory, where the **'client_secrets.json'** should alse be stored. This YAML file should have the following content:
 
  ```
    client_config_backend: file
