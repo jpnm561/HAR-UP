@@ -40,7 +40,7 @@ def refresh_gauth(gauth, drive):
             gauth.Refresh()
         else:
             gauth.Authorize()
-        gauth.SaveCredentialsFile()
+        gauth.SaveCredentialsFile('credentials.json')
         drive = GoogleDrive(gauth)
     except Exception as e:
         print('An error ocurred: ' + str(e))
